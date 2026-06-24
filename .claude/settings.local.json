@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__46391837-671d-491a-8ba0-e4d3a69941cf__get_metadata",
+      "mcp__plugin_design_figma__get_metadata",
+      "mcp__plugin_design_figma__search_design_system",
+      "mcp__plugin_design_figma__get_design_context",
+      "mcp__plugin_design_figma__use_figma",
+      "mcp__plugin_design_figma__get_screenshot",
+      "mcp__plugin_design_figma__get_variable_defs",
+      "mcp__Figma__get_screenshot",
+      "mcp__Figma__get_metadata",
+      "mcp__46391837-671d-491a-8ba0-e4d3a69941cf__get_design_context",
+      "mcp__46391837-671d-491a-8ba0-e4d3a69941cf__whoami",
+      "mcp__46391837-671d-491a-8ba0-e4d3a69941cf__get_screenshot",
+      "mcp__Figma__get_design_context",
+      "Bash(python3 -c ' *)",
+      "Read(//tmp/**)",
+      "Bash(echo '---font names---'; grep -oiE \"font-\\\\['[^]]*\\\\]\" /tmp/figma_code.txt | sort | uniq -c *)",
+      "Bash(curl -s -o /tmp/test_asset.png -w \"%{http_code} %{size_download}bytes\\\\n\" --max-time 5 \"http://localhost:3845/assets/d3418c36a81a51f139866e9e17d2d32fc0f3a43f.png\")",
+      "Bash(curl -s -o /tmp/test_asset.png -w \"HTTP:%{http_code} SIZE:%{size_download}\\\\n\" --max-time 6 \"http://localhost:3845/assets/d3418c36a81a51f139866e9e17d2d32fc0f3a43f.png\")",
+      "Bash(mkdir -p .claude)",
+      "Bash(pkill -f \"http.server 4521\")",
+      "mcp__Claude_Preview__preview_start",
+      "mcp__46391837-671d-491a-8ba0-e4d3a69941cf__get_variable_defs",
+      "Bash(curl -s -o /tmp/figma_desktop.png \"https://www.figma.com/api/mcp/asset/695fff12-b122-45ed-8695-3df051615e9b\")",
+      "Bash(npm --version)",
+      "Bash(cp /Users/bytedance/Downloads/Test/styles.css /tmp/portfolio/ && echo synced)"
+    ]
+  }
+}

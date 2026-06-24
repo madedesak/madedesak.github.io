@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "static",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["/tmp/portfolio/serve.py"],
+      "port": 4521
+    }
+  ]
+}
