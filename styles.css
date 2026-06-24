@@ -309,6 +309,7 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: -0.32px;
   color: #fff;
   max-width: 425px;
+  padding: 0 20px;
 }
 .footer__accent { color: rgba(255, 255, 255, 0.5); }
 
@@ -405,5 +406,5 @@ a { color: inherit; text-decoration: none; }
   .experience__heading { font-size: 26px; }
 
   .footer__headline { font-size: 26px; }
-  .footer__link { font-size: 12px; letter-spacing: 1.6px; padding-left: 0; }
+  .footer__link { font-size: 12px; letter-spacing: 1.6px; padding: 16px 20px; }
 }
