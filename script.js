@@ -68,15 +68,46 @@
           }
         });
       },
-      { threshold: 0.18, rootMargin: "0px 0px -10% 0px" }
+      // threshold 0 so it fires on entry regardless of element height
+      // (case-study sections can be far taller than the viewport)
+      { threshold: 0, rootMargin: "0px 0px -12% 0px" }
     );
     els.forEach(function (el) { io.observe(el); });
+  }
+
+  // Highlight the section-nav (TOC) link for whatever section is in view.
+  function wireScrollSpy() {
+    var links = document.querySelectorAll(".cs-toc__link");
+    if (!links.length || !("IntersectionObserver" in window)) return;
+    var map = {};
+    links.forEach(function (link) {
+      var id = link.getAttribute("href");
+      if (id && id.charAt(0) === "#") {
+        var section = document.getElementById(id.slice(1));
+        if (section) map[id.slice(1)] = link;
+      }
+    });
+    var spy = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          links.forEach(function (l) { l.classList.remove("is-active"); });
+          if (map[entry.target.id]) map[entry.target.id].classList.add("is-active");
+        });
+      },
+      { rootMargin: "-28% 0px -60% 0px", threshold: 0 }
+    );
+    Object.keys(map).forEach(function (id) {
+      var s = document.getElementById(id);
+      if (s) spy.observe(s);
+    });
   }
 
   function init() {
     onResize();
     wireNavAnchors();
     wireScrollReveal();
+    wireScrollSpy();
   }
 
   if (document.readyState === "loading") {

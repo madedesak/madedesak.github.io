@@ -1,0 +1,496 @@
+/* =========================================================
+   CASE STUDY PAGE — onboarding revamp
+   Reuses tokens + .serif-accent + .reveal from styles.css
+   Layout: centered ~794px content column, thin sticky TOC in
+   the left gutter (matches Figma node 69:78).
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   COLOR TOKENS — single source of truth for this page.
+   Change a value here to recolor everything that uses it.
+   --------------------------------------------------------- */
+:root {
+  /* text + surface (alias the shared styles.css tokens) */
+  --cs-text:         var(--black);      /* headings / strong text   */
+  --cs-text-muted:   var(--body);       /* body copy                */
+  --cs-text-subtle:  var(--overline);   /* eyebrows / numbers / TOC */
+  --cs-surface:      var(--bg);         /* page background          */
+
+  /* hairlines & faint labels */
+  --cs-line:        #ececec;            /* strategy timeline line   */
+  --cs-line-soft:   #e3e3e3;            /* funnel connector line    */
+  --cs-toc-group:   #d8d8d8;            /* TOC group heading        */
+  --cs-ph-label:    #9a9a9a;            /* placeholder caption      */
+  --cs-insight-card-bg: #f2f2f3;        /* DATA INSIGHTS stat card  */
+
+  /* browser window / frosted glass / canvas shadows */
+  --cs-window-bg:     #fff;
+  --cs-glass-bg:      rgba(255, 255, 255, 0.22);
+  --cs-glass-shadow:  rgba(0, 0, 0, 0.28);
+  --cs-canvas-shadow: rgba(0, 0, 0, 0.18);
+
+  /* AFTER/BEFORE REVAMP pill */
+  --cs-pill-bg:   rgba(0, 0, 0, 0.78);
+  --cs-pill-text: #fff;
+  --cs-pill-light-bg:   #fff;        /* BEFORE REVAMP pill (on dark gradient) */
+  --cs-pill-light-text: #1a1a1a;
+
+  /* check icons & status accents */
+  --cs-check:     #1a1a1a;              /* HMW checklist tick       */
+  --cs-check-alt: #c9462a;              /* annotated red tick       */
+  --cs-pros:      #3aa76d;              /* PROS label               */
+  --cs-cons:      #d2674a;              /* CONS label               */
+
+  /* placeholder figure gradient */
+  --cs-ph-warm: rgba(255, 138, 76, 0.12);
+  --cs-ph-cool: rgba(120, 150, 170, 0.14);
+  --cs-ph-1:    #f0ece8;
+  --cs-ph-2:    #e9edf0;
+
+  /* mockup "canvas" gradient (light + dark variants) */
+  --cs-canvas-warm:      rgba(255, 150, 90, 0.18);
+  --cs-canvas-1:         #efe7e1;
+  --cs-canvas-2:         #e7ebef;
+  --cs-canvas-dark-glow: rgba(120, 120, 140, 0.5);
+  --cs-canvas-dark-1:    #2a2a2e;
+  --cs-canvas-dark-2:    #15151a;
+
+  /* IMPACT — dark section */
+  --cs-impact-bg:       #000;
+  --cs-on-dark:         #fff;                       /* primary text on dark */
+  --cs-on-dark-muted:   rgba(255, 255, 255, 0.6);   /* desc / labels        */
+  --cs-on-dark-accent:  rgba(255, 255, 255, 0.55);  /* serif accents        */
+  --cs-on-dark-eyebrow: rgba(255, 255, 255, 0.45);  /* eyebrow on dark      */
+  --cs-on-dark-line:    rgba(255, 255, 255, 0.12);  /* dividers on dark     */
+}
+
+/* ---------------------------------------------------------
+   TYPE TOKENS — single source of truth for typography.
+   Families + weights + a size scale (named by px for clarity).
+   Change a value here to restyle type across the page.
+   --------------------------------------------------------- */
+:root {
+  /* families (alias the shared styles.css fonts) */
+  --cs-font-sans:  var(--sans);
+  --cs-font-serif: var(--serif);
+  --cs-font-mono:  var(--mono);
+
+  /* weights */
+  --cs-fw-light:   300;
+  --cs-fw-regular: 400;
+
+  /* size scale */
+  --cs-fs-10: 10px;   /* pill                       */
+  --cs-fs-11: 11px;   /* captions / placeholder     */
+  --cs-fs-12: 12px;   /* eyebrow / nav / tags       */
+  --cs-fs-14: 14px;   /* body                       */
+  --cs-fs-15: 15px;   /* checklist items            */
+  --cs-fs-16: 16px;   /* labels / numbers           */
+  --cs-fs-17: 17px;   /* issue / HMW titles         */
+  --cs-fs-18: 18px;   /* large numbers              */
+  --cs-fs-19: 19px;   /* concept title              */
+  --cs-fs-20: 20px;   /* callout (serif)            */
+  --cs-fs-22: 22px;   /* signal lead                */
+  --cs-fs-23: 23px;   /* h2 (mobile)                */
+  --cs-fs-26: 26px;   /* h2                         */
+  --cs-fs-27: 27px;   /* impact headline (mobile)   */
+  --cs-fs-28: 28px;   /* title (mobile)             */
+  --cs-fs-30: 30px;   /* funnel head                */
+  --cs-fs-34: 34px;   /* impact headline            */
+  --cs-fs-38: 38px;   /* page title                 */
+  --cs-fs-44: 44px;   /* metric numbers             */
+
+  /* line-height */
+  --cs-lh-title:   1.22;   /* page title              */
+  --cs-lh-snug:    1.25;   /* impact headline         */
+  --cs-lh-heading: 1.35;   /* h2 / issue title        */
+  --cs-lh-relaxed: 1.4;    /* hmw q / signal lead     */
+  --cs-lh-body:    1.5;    /* notes / callout / desc  */
+  --cs-lh-loose:   1.55;   /* step desc / checklist   */
+  --cs-lh-loosest: 1.6;    /* body copy               */
+
+  /* letter-spacing */
+  --cs-ls-eyebrow:   1.6px;   /* mono eyebrow              */
+  --cs-ls-label:     1.4px;   /* mono caps (back/cap/pill) */
+  --cs-ls-wide:      1px;     /* tags / toc group / ph     */
+  --cs-ls-toc:       0.4px;   /* toc links                 */
+  --cs-ls-h2:       -0.3px;   /* h2                        */
+  --cs-ls-headline: -0.4px;   /* impact headline           */
+  --cs-ls-title:    -0.6px;   /* page title                */
+
+  /* layout */
+  --cs-content-w: 794px;   /* main content column — impact section matches this */
+}
+
+.cs { background: var(--cs-surface); color: var(--cs-text); }
+
+/* ---------- type helpers ---------- */
+.cs-eyebrow {
+  font-family: var(--cs-font-mono);
+  font-weight: var(--cs-fw-light);
+  font-size: var(--cs-fs-12);
+  letter-spacing: var(--cs-ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--cs-text-subtle);
+}
+.cs-body {
+  font-family: var(--cs-font-sans);
+  font-weight: var(--cs-fw-light);
+  font-size: var(--cs-fs-14);
+  line-height: var(--cs-lh-loosest);
+  color: var(--cs-text-muted);
+}
+.cs-body--lead { max-width: 640px; }
+.cs-h2 {
+  font-family: var(--cs-font-sans);
+  font-weight: var(--cs-fw-light);
+  font-size: var(--cs-fs-26);
+  line-height: var(--cs-lh-heading);
+  letter-spacing: var(--cs-ls-h2);
+  color: var(--cs-text);
+}
+.cs-h2 .serif-accent { color: var(--cs-text-subtle); }   /* italic-serif accent phrase */
+
+/* ---------- shell: centered content + gutter TOC ----------
+   The content column is centered in the viewport (equal 1fr gutters).
+   The nav is placed into the leftover left gutter, right-aligned
+   toward the content — it is not part of the centered block. */
+.cs-wrap {
+  padding: var(--pad) 0;
+  display: grid;
+  grid-template-columns: 1fr minmax(0, var(--cs-content-w)) 1fr;
+  align-items: start;
+}
+.cs-main { grid-column: 2; }
+
+.cs-nav {
+  grid-column: 1;
+  justify-self: start;
+  width: 150px;
+  margin-left: var(--pad);   /* pin the nav 120px from the left edge */
+  position: sticky;
+  top: 56px;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.cs-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-12); letter-spacing: var(--cs-ls-label);
+  color: var(--cs-text-muted); transition: color 0.2s ease;
+}
+.cs-back:hover { color: var(--cs-text); }
+.cs-back__arrow { width: 16px; height: 16px; display: block; }
+.cs-back--inline { display: none; }
+
+.cs-toc { display: flex; flex-direction: column; gap: 20px; }
+.cs-toc__link {
+  font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-12); letter-spacing: var(--cs-ls-toc);
+  color: var(--cs-text-subtle); transition: color 0.2s ease;
+}
+.cs-toc__link:hover, .cs-toc__link.is-active { color: var(--cs-text); }
+.cs-toc__link--sub { padding-left: 14px; }
+.cs-toc__group {
+  margin-top: 4px; font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-11);
+  letter-spacing: var(--cs-ls-wide); text-transform: uppercase; color: var(--cs-toc-group);
+}
+
+/* ---------- content rhythm ---------- */
+.cs-main { min-width: 0; }
+.cs-section { margin-top: 130px; }
+.cs-eyebrow + .cs-h2 { margin-top: 14px; }
+.cs-h2 + .cs-body--lead { margin-top: px; }
+
+/* ---------- figures / images ---------- */
+.cs-figure { margin: 0; }
+.cs-figure img { display: block; width: 100%; height: auto; }
+.cs-figure__cap {
+  font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-11); letter-spacing: var(--cs-ls-label);
+  text-transform: uppercase; color: var(--cs-text-subtle); margin-bottom: 10px;
+}
+/* placeholder image area — soft, on-brand (drop real images in later) */
+.cs-figure--ph {
+  position: relative; min-height: 240px; border-radius: 10px;
+  background:
+    radial-gradient(130% 110% at 0% 0%, var(--cs-ph-warm), transparent 50%),
+    radial-gradient(120% 120% at 100% 100%, var(--cs-ph-cool), transparent 55%),
+    linear-gradient(135deg, var(--cs-ph-1), var(--cs-ph-2));
+}
+.cs-figure--ph::after {
+  content: attr(data-ph); position: absolute; inset: 0; display: grid; place-items: center;
+  padding: 16px; text-align: center; font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-11);
+  letter-spacing: var(--cs-ls-wide); text-transform: uppercase; color: var(--cs-ph-label);
+}
+/* mockup figures sit on a wider tinted "canvas" like the Figma */
+.cs-canvas {
+  position: relative; border-radius: 12px; overflow: hidden; padding: 44px;
+  background:
+    radial-gradient(140% 120% at 0% 0%, var(--cs-canvas-warm), transparent 55%),
+    linear-gradient(135deg, var(--cs-canvas-1), var(--cs-canvas-2));
+}
+.cs-canvas img, .cs-canvas video { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 24px 60px var(--cs-canvas-shadow); }
+.cs-canvas--dark {
+  background:
+    radial-gradient(120% 120% at 80% 10%, var(--cs-canvas-dark-glow), transparent 60%),
+    linear-gradient(135deg, var(--cs-canvas-dark-1), var(--cs-canvas-dark-2));
+}
+
+/* small "AFTER REVAMP / BEFORE REVAMP" pill */
+.cs-pill {
+  position: absolute; top: 16px; left: 16px; z-index: 2;
+  padding: 5px 12px; border-radius: 2px; background: var(--cs-pill-bg); border: 1px solid #EDEDED;
+  color: var(--cs-pill-text); font-family: var(--cs-font-mono); font-weight: var(--cs-fw-regular); font-size: var(--cs-fs-10); letter-spacing: var(--cs-ls-label);
+}
+.cs-canvas { position: relative; }
+.cs-pill--light { background: var(--cs-pill-light-bg); color: var(--cs-pill-light-text); }
+.cs-before .cs-pill { top: 24px; left: 24px; }
+
+/* ---------- HEADER ---------- */
+.cs-header { padding-top: 4px; }
+.cs-title {
+  font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-38); line-height: var(--cs-lh-title);
+  letter-spacing: var(--cs-ls-title); margin-top: 24px; color: var(--cs-text);
+}
+.cs-tags {
+  display: flex; align-items: center; gap: 10px; margin-top: 20px;
+  font-family: var(--cs-font-mono); font-weight: var(--cs-fw-regular); font-size: var(--cs-fs-12); letter-spacing: var(--cs-ls-wide); color: var(--cs-text);
+}
+.cs-tags__sep, .cs-tags span:last-child { color: var(--cs-text-subtle); font-weight: var(--cs-fw-light); }
+.cs-tags__logo { width: 20px; height: 20px; border-radius: 5px; display: block; flex: none; }
+.cs-figure--hero { margin-top: 58px; }   /* 58px gap below the tags, per Figma */
+/* animated hero — exact Figma geometry (frame 794x444; frosted-glass card at
+   89,89 / 616x355 with an 8px reveal around the browser window). */
+.cs-hero-stage {
+  position: relative;
+  aspect-ratio: 794 / 444;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.cs-figure--hero .cs-hero-stage__bg {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 0;
+}
+/* frosted-glass card */
+.cs-glass {
+  position: absolute;
+  left: 11.21%;     /* 89 / 794 */
+  top: 20.05%;      /* 89 / 444 */
+  width: 77.58%;    /* 616 / 794 */
+  height: 79.95%;   /* 355 / 444 — sits flush to the frame bottom */
+  padding: 8px 8px 0;
+  border-radius: 12px 12px 0 0;
+  background: var(--cs-glass-bg);
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+  box-shadow: 0 26px 70px var(--cs-glass-shadow);
+  overflow: hidden;
+}
+/* the browser window inside the glass: real Safari chrome bar + the recording */
+.cs-browser {
+  width: 100%; height: 100%;
+  border-radius: 7px 7px 0 0;
+  overflow: hidden;
+  background: var(--cs-window-bg);
+  display: flex;
+  flex-direction: column;
+}
+.cs-figure--hero .cs-window__bar { display: block; width: 100%; height: auto; border-radius: 0; }
+.cs-figure--hero .cs-window__shot {
+  flex: 1 1 auto; min-height: 0;
+  display: block; width: 100%; height: 100%;
+  object-fit: cover; object-position: top center; border-radius: 0;
+}
+
+/* ---------- SUMMARY (label-left / text-right rows) ---------- */
+.cs-summary { display: flex; flex-direction: column; gap: 44px; }
+.cs-srow { display: grid; grid-template-columns: 140px 1fr; gap: 24px; align-items: start; }
+.cs-srow .cs-eyebrow { padding-top: 3px; }
+
+/* ---------- CHALLENGE ---------- */
+.cs-figure--chart { margin-top: 44px; }
+
+/* ---------- DESIGN STRATEGY (list left + image right) ---------- */
+.cs-strategy { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.cs-strategy__img { align-self: stretch; }
+.cs-strategy__img img { height: 100%; object-fit: cover; }
+.cs-steps { list-style: none; position: relative; display: flex; flex-direction: column; gap: 30px; margin-top: 28px; }
+.cs-steps::before { content: ""; position: absolute; left: 9px; top: 10px; bottom: 10px; width: 1px; background: var(--cs-line); }
+.cs-step { display: grid; grid-template-columns: 36px 1fr; gap: 14px; align-items: start; }
+.cs-step__num { position: relative; z-index: 1; font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-18); color: var(--cs-text-subtle); background: var(--cs-surface); }
+.cs-step__title { font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-16); color: var(--cs-text); margin-bottom: 6px; }
+.cs-step__desc { font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-14); line-height: var(--cs-lh-loose); color: var(--cs-text-muted); }
+
+/* ---------- FUNNEL (centered head + 3 cols) ---------- */
+.cs-funnel-head { text-align: center; font-size: var(--cs-fs-30); }
+.cs-funnel { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 48px; }
+.cs-funnel__col { display: flex; flex-direction: column; gap: 14px; }
+.cs-funnel__num { display: flex; align-items: center; gap: 12px; font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-16); color: var(--cs-text-subtle); }
+.cs-funnel__num::after { content: ""; flex: 1; height: 1px; background: var(--cs-line-soft); }
+.cs-funnel__shot { min-height: 150px; border-radius: 8px; }
+.cs-funnel__label { font-family: var(--cs-font-sans); font-weight: var(--cs-fw-regular); font-size: var(--cs-fs-16); color: var(--cs-text); }
+.cs-funnel__col .cs-eyebrow { margin-top: 4px; }
+
+/* ---------- STAGES ---------- */
+.cs-stage { display: flex; flex-direction: column; gap: 96px; }
+.cs-block { display: flex; flex-direction: column; gap: 24px; }
+
+/* MAIN ISSUES — issues stacked in a wide left column, insight in a narrow right column */
+.cs-issues { display: grid; grid-template-columns: 1.7fr 1fr; gap: 28px; align-items: start; }
+.cs-issues__list { display: flex; flex-direction: column; gap: 22px; }
+.cs-issue { display: grid; grid-template-columns: 40px 1fr; align-items: start; }
+.cs-issue__num { font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-16); color: var(--cs-text-subtle); }
+.cs-issue__title { font-family: var(--cs-font-sans); font-weight: var(--cs-fw-regular); font-size: var(--cs-fs-17); line-height: var(--cs-lh-heading); color: var(--cs-text); margin-bottom: 8px; }
+
+/* insight (right column) — a light card, top-aligned with the first issue */
+.cs-insight {
+  margin-top: 30px;
+  display: flex; flex-direction: column; gap: 12px;
+  padding: 24px; background: var(--cs-insight-card-bg);
+}
+.cs-insight__text--serif { font-family: var(--cs-font-serif); font-style: italic; color: var(--cs-text-muted); line-height: var(--cs-lh-body); }
+/* DATA INSIGHTS variant: big stat */
+.cs-insight__stat { font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-44); line-height: 1; color: var(--cs-text); }
+
+/* BEFORE REVAMP mockup — metallic gradient bg with the landing recording on top */
+.cs-before {
+  position: relative;
+  aspect-ratio: 794 / 500;
+  overflow: hidden;
+  background: url("assets/cs-gradient-bg.png") center/cover no-repeat;
+}
+.cs-before__frame {
+  position: absolute;
+  left: 11.34%;    /* 90 / 794 */
+  top: 18.2%;      /* 91 / 500 */
+  width: 77.33%;   /* 614 / 794 */
+  padding: 6px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.16);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.28);
+}
+.cs-before__frame img, .cs-before__frame video { display: block; width: 100%; height: auto; border-radius: 6px; }
+
+/* solution / HMW (question left, checks right) */
+.cs-hmw { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.cs-hmw__q { display: grid; grid-template-columns: 28px 1fr; gap: 10px; font-family: var(--cs-font-sans); font-weight: var(--cs-fw-regular); font-size: var(--cs-fs-17); line-height: var(--cs-lh-relaxed); color: var(--cs-text); }
+.cs-hmw__num { font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-16); color: var(--cs-text-subtle); }
+.cs-checks { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.cs-checks li {
+  position: relative; padding-left: 26px; font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light);
+  font-size: var(--cs-fs-15); line-height: var(--cs-lh-loose); color: var(--cs-text-muted);
+}
+.cs-checks li::before {
+  content: ""; position: absolute; left: 0; top: 2px; width: 15px; height: 15px; border-radius: 4px; background: var(--cs-check);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M9.5 16.2 5.3 12l-1.4 1.4 5.6 5.6 12-12-1.4-1.4z'/%3E%3C/svg%3E") center/11px no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M9.5 16.2 5.3 12l-1.4 1.4 5.6 5.6 12-12-1.4-1.4z'/%3E%3C/svg%3E") center/11px no-repeat;
+}
+
+/* annotated breakdown: image left + checklist right */
+.cs-annotated { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.cs-annotated__notes { list-style: none; display: flex; flex-direction: column; gap: 18px; padding-top: 8px; }
+.cs-annotated__notes li {
+  position: relative; padding-left: 24px; font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light);
+  font-size: var(--cs-fs-14); line-height: var(--cs-lh-body); color: var(--cs-text-muted);
+}
+.cs-annotated__notes li::before {
+  content: ""; position: absolute; left: 0; top: 3px; width: 13px; height: 13px; border-radius: 3px; background: var(--cs-check-alt);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M9.5 16.2 5.3 12l-1.4 1.4 5.6 5.6 12-12-1.4-1.4z'/%3E%3C/svg%3E") center/10px no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M9.5 16.2 5.3 12l-1.4 1.4 5.6 5.6 12-12-1.4-1.4z'/%3E%3C/svg%3E") center/10px no-repeat;
+}
+
+/* before / after */
+.cs-beforeafter { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+
+/* guidance gallery */
+.cs-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.cs-gallery .cs-figure--ph { min-height: 190px; }
+
+/* ---------- CONCEPT TESTING ---------- */
+.cs-concepts__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.cs-concept { display: flex; flex-direction: column; gap: 14px; }
+.cs-concept__num { font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-18); color: var(--cs-text-subtle); }
+.cs-concept__title { font-family: var(--cs-font-sans); font-weight: var(--cs-fw-regular); font-size: var(--cs-fs-19); color: var(--cs-text); }
+.cs-concept .cs-figure--ph { min-height: 200px; }
+.cs-prc { display: flex; flex-direction: column; gap: 6px; }
+.cs-prc__h { color: var(--cs-pros); }
+.cs-prc__h--con { color: var(--cs-cons); }
+.cs-callout {
+  margin-top: 8px; padding: 0; max-width: 720px;
+  font-family: var(--cs-font-serif); font-style: italic; font-weight: var(--cs-fw-light); font-size: var(--cs-fs-20);
+  line-height: var(--cs-lh-body); color: var(--cs-text);
+}
+
+/* ---------- IMPACT (full-bleed dark) ---------- */
+.cs-impact { margin-top: 150px; background: var(--cs-impact-bg); padding: 110px var(--pad); }
+.cs-impact__inner { max-width: var(--cs-content-w); margin: 0 auto; }
+.cs-eyebrow--dark { color: var(--cs-on-dark-eyebrow); }
+.cs-impact__headline {
+  margin-top: 18px; font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-34); line-height: var(--cs-lh-snug);
+  letter-spacing: var(--cs-ls-headline); color: var(--cs-on-dark); max-width: 760px;
+}
+.cs-impact__headline .serif-accent { color: var(--cs-on-dark-accent); }
+.cs-metrics { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 64px; }
+.cs-metric { padding: 8px 28px; display: flex; flex-direction: column; gap: 72px; }
+.cs-metric:first-child { padding-left: 0; }
+.cs-metric + .cs-metric { border-left: 1px solid var(--cs-on-dark-line); }
+.cs-metric__desc { font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-14); line-height: var(--cs-lh-body); color: var(--cs-on-dark-muted); }
+.cs-metric__num { font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-44); color: var(--cs-on-dark); }
+.cs-signal { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 80px; align-items: start; }
+.cs-signal__lead { margin-top: 16px; font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-22); line-height: var(--cs-lh-relaxed); color: var(--cs-on-dark); }
+.cs-signal__lead .serif-accent { color: var(--cs-on-dark-accent); }
+.cs-signal__stats { display: flex; flex-direction: column; }
+.cs-sstat { display: flex; align-items: center; gap: 16px; padding: 18px 0; }
+.cs-sstat:not(:last-child) { border-bottom: 1px solid var(--cs-on-dark-line); }
+.cs-sstat__num { flex: 0 0 92px; font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-18); color: var(--cs-on-dark); }
+.cs-sstat__label { font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-14); color: var(--cs-on-dark-muted); }
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+/* below ~1360 the pinned nav would crowd the centered content — drop it,
+   center the content as a single padded column, show the inline back link */
+@media (max-width: 1360px) {
+  .cs-wrap {
+    grid-template-columns: minmax(0, var(--cs-content-w));
+    justify-content: center;
+    padding-left: var(--pad);
+    padding-right: var(--pad);
+  }
+  .cs-main { grid-column: 1; }
+  .cs-nav { display: none; }
+  .cs-back--inline { display: inline-flex; margin-bottom: 28px; }
+}
+@media (max-width: 960px) {
+  .cs-wrap { grid-template-columns: 1fr; padding-top: 28px; }
+  .cs-nav { display: none; }
+  .cs-back--inline { display: inline-flex; margin-bottom: 28px; }
+  .cs-section { margin-top: 96px; }
+  .cs-stage { gap: 72px; }
+  .cs-strategy { grid-template-columns: 1fr; gap: 36px; }
+  .cs-strategy__img { order: -1; }
+  .cs-funnel { grid-template-columns: 1fr; gap: 36px; }
+  .cs-issues { grid-template-columns: 1fr; gap: 28px; }
+  .cs-insight { margin-top: 0; }
+  .cs-hmw { grid-template-columns: 1fr; gap: 20px; }
+  .cs-annotated { grid-template-columns: 1fr; gap: 24px; }
+  .cs-concepts__grid { grid-template-columns: 1fr; }
+  .cs-gallery { grid-template-columns: repeat(2, 1fr); }
+  .cs-impact { margin-top: 110px; padding: 80px var(--pad); }
+  .cs-signal { grid-template-columns: 1fr; gap: 36px; }
+}
+@media (max-width: 560px) {
+  .cs-title { font-size: var(--cs-fs-28); }
+  .cs-h2, .cs-funnel-head { font-size: var(--cs-fs-23); }
+  .cs-srow { grid-template-columns: 1fr; gap: 8px; }
+  .cs-beforeafter { grid-template-columns: 1fr; gap: 28px; }
+  .cs-gallery { grid-template-columns: 1fr; }
+  .cs-metrics { grid-template-columns: 1fr; }
+  .cs-metric { padding: 26px 0; gap: 22px; }
+  .cs-metric:first-child { padding-top: 0; }
+  .cs-metric + .cs-metric { border-left: none; border-top: 1px solid var(--cs-on-dark-line); }
+  .cs-metric__num { font-size: var(--cs-fs-38); }
+  .cs-impact__headline { font-size: var(--cs-fs-27); }
+  .cs-canvas { padding: 22px; }
+}

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>Onboarding Revamp — Case Study — Desak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400&family=IBM+Plex+Serif:ital,wght@1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="case-study.css" />
+</head>
+<body class="cs">
+
+  <div class="cs-wrap">
+
+    <!-- STICKY SECTION NAV (left gutter) -->
+    <aside class="cs-nav" aria-label="Sections">
+      <nav class="cs-toc">
+        <a class="cs-toc__link" href="#summary">SUMMARY</a>
+        <a class="cs-toc__link" href="#challenge">CHALLENGE</a>
+        <a class="cs-toc__link" href="#strategy">STRATEGY</a>
+        <a class="cs-toc__link" href="#pre-registration">PRE-REGISTRATION</a>
+        <a class="cs-toc__link" href="#registration">REGISTRATION</a>
+        <a class="cs-toc__link" href="#post-registration">POST-REGISTRATION</a>
+        <a class="cs-toc__link" href="#impact">IMPACT</a>
+      </nav>
+    </aside>
+
+    <main class="cs-main">
+
+      <!-- HEADER -->
+      <header class="cs-header">
+        <a class="cs-back" href="index.html#work">
+          <svg class="cs-back__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3 L5 8 L10 13 M5 8 H13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>BACK TO HOME</span>
+        </a>
+        <h1 class="cs-title reveal">
+          <span class="serif-accent">A better welcome</span><span class="sans-light"> for new sellers: designing onboarding experience</span>
+        </h1>
+        <div class="cs-tags reveal">
+          <img class="cs-tags__logo" src="assets/cs-tiktok.png" alt="" />
+          <span >TIKTOK SHOP</span>
+          <span class="cs-tags__sep">/</span>
+          <span>DESIGN &amp; USER RESEARCH</span>
+        </div>
+        <figure class="cs-figure cs-figure--hero reveal">
+          <div class="cs-hero-stage">
+            <video class="cs-hero-stage__bg" autoplay loop muted playsinline aria-hidden="true"><source src="assets/hero-1.webm" type="video/webm" /></video>
+            <div class="cs-glass">
+              <div class="cs-browser">
+                <img class="cs-window__bar" src="assets/cs-window-bar.png" alt="" aria-hidden="true" />
+                <video class="cs-window__shot" autoplay loop muted playsinline aria-label="TikTok Shop Seller Center onboarding flow"><source src="assets/hero-2.webm" type="video/webm" /></video>
+              </div>
+            </div>
+          </div>
+        </figure>
+      </header>
+
+      <!-- SUMMARY (label-left / text-right rows) -->
+      <section id="summary" class="cs-section cs-summary reveal">
+        <div class="cs-srow">
+          <p class="cs-eyebrow">CHALLENGE</p>
+          <p class="cs-body">Seller registrations in Southeast Asia (SEA) dropped 3% month-over-month. It wasn't a lack of interest, the onboarding process was simply too frustrating. Only 34% of sellers who started the registration form actually finished it.</p>
+        </div>
+        <div class="cs-srow">
+          <p class="cs-eyebrow">STRATEGY</p>
+          <p class="cs-body">I led the end-to-end redesign of TikTok Shop's seller onboarding across SEA: diagnosing friction across three stages of the journey, facilitating cross-functional workshops, running moderated user testing in the Philippines and Malaysia, and shipping a redesigned flow that made it easier for sellers to start, complete, and recover from rejection.</p>
+        </div>
+        <div class="cs-srow">
+          <p class="cs-eyebrow">RESULT</p>
+          <p class="cs-body">Successfully onboarded sellers grew by +8.85%, sellers who actually start generate GMV increase by +4pp (from 70% to 74%) and satisfaction rate increase to 4.83 on CSAT (+0.28).</p>
+        </div>
+      </section>
+
+      <!-- CHALLENGE -->
+      <section id="challenge" class="cs-section reveal">
+        <p class="cs-eyebrow">CHALLENGE</p>
+        <h2 class="cs-h2">Nobody quits because selling is hard. They quit because signing up is.</h2>
+        <p class="cs-body cs-body--lead">When seller registrations in SEA dropped 3% MoM, it was tempting to blame market conditions. Our audit proved otherwise: the problem wasn't a lack of interest, but a broken onboarding experience.</p>
+        <figure class="cs-figure cs-figure--chart">
+          <img src="assets/cs-chart.png" alt="Line chart: sellers onboarded vs registered, monthly Apr–Dec 2024" />
+        </figure>
+      </section>
+
+      <!-- DESIGN STRATEGY (list left + image right) -->
+      <section id="strategy" class="cs-section cs-strategy reveal">
+        <div>
+          <p class="cs-eyebrow">DESIGN STRATEGY</p>
+          <ol class="cs-steps">
+            <li class="cs-step"><span class="cs-step__num">01.</span><div><h3 class="cs-step__title">Design Audit</h3><p class="cs-step__desc">Audit existing design to map out the journey and identify issues theme.</p></div></li>
+            <li class="cs-step"><span class="cs-step__num">02.</span><div><h3 class="cs-step__title">Workshop</h3><p class="cs-step__desc">Workshop with cross-functional team to identify hidden issues from ops &amp; product team.</p></div></li>
+            <li class="cs-step"><span class="cs-step__num">03.</span><div><h3 class="cs-step__title">Develop UI &amp; User Testing</h3><p class="cs-step__desc">Moderated testing with sellers in PH and MY.</p></div></li>
+            <li class="cs-step"><span class="cs-step__num">04.</span><div><h3 class="cs-step__title">Iterate Design</h3><p class="cs-step__desc">Iterated the design based on findings.</p></div></li>
+          </ol>
+        </div>
+        <figure class="cs-figure cs-strategy__img">
+          <img src="assets/cs-strategy.png" alt="Cross-functional workshop board" />
+        </figure>
+      </section>
+
+      <!-- FUNNEL (centered head + 3 cols) -->
+      <section id="journeys" class="cs-section reveal">
+        <h2 class="cs-h2 cs-funnel-head"><span class="serif-accent">The onboarding funnel:</span><span class="sans-light"> 3 stages of friction.</span></h2>
+        <div class="cs-funnel">
+          <div class="cs-funnel__col">
+            <p class="cs-funnel__num">01.</p>
+            <div class="cs-figure cs-figure--ph cs-funnel__shot" data-ph="Landing page"></div>
+            <p class="cs-eyebrow">PRE-REGISTRATION</p>
+            <p class="cs-funnel__label">Landing page</p>
+          </div>
+          <div class="cs-funnel__col">
+            <p class="cs-funnel__num">02.</p>
+            <div class="cs-figure cs-figure--ph cs-funnel__shot" data-ph="Registration form"></div>
+            <p class="cs-eyebrow">REGISTRATION</p>
+            <p class="cs-funnel__label">Registration form</p>
+          </div>
+          <div class="cs-funnel__col">
+            <p class="cs-funnel__num">03.</p>
+            <div class="cs-figure cs-figure--ph cs-funnel__shot" data-ph="Homepage"></div>
+            <p class="cs-eyebrow">POST-REGISTRATION</p>
+            <p class="cs-funnel__label">Homepage &amp; Registration Page</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- STAGE 1: PRE-REGISTRATION -->
+      <section id="pre-registration" class="cs-section cs-stage reveal">
+        <div class="cs-block cs-issues">
+          <div class="cs-issues__list">
+            <p class="cs-eyebrow">PRE-REGISTRATION / MAIN ISSUES</p>
+            <div class="cs-issue"><span class="cs-issue__num">01.</span><div><h3 class="cs-issue__title">Visitors mistake the seller signup for creator signup</h3><p class="cs-body">They often mistake the seller registration landing page as the entry point to sign up as a content-creator.</p></div></div>
+            <div class="cs-issue"><span class="cs-issue__num">02.</span><div><h3 class="cs-issue__title">Some are not prepared enough for the next step hence drop halfway.</h3><p class="cs-body">The main reason for not completing registration is missing required documents, as they were not fully prepared before starting the application.</p></div></div>
+          </div>
+          <div class="cs-insight">
+            <p class="cs-eyebrow">SURVEY INSIGHTS</p>
+            <p class="cs-body cs-insight__text--serif">While most sellers proactively seek information before registration, many still face challenges in understanding the process. Clarity issues, especially the complexity of information and lack of examples for required documents, remain a concern.</p>
+          </div>
+        </div>
+
+        <figure class="cs-before reveal">
+          <span class="cs-pill cs-pill--light">BEFORE REVAMP</span>
+          <div class="cs-before__frame">
+            <video autoplay loop muted playsinline aria-label="Pre-revamp TikTok Shop PH seller registration landing page"><source src="assets/before-landing.webm" type="video/webm" /></video>
+          </div>
+        </figure>
+
+        <div class="cs-block">
+          <p class="cs-eyebrow">PRE-REGISTRATION / SOLUTION</p>
+          <h2 class="cs-h2"><span class="serif-accent">Prepare sellers better</span><span class="sans-light"> before they kick start their business</span></h2>
+          <figure class="cs-canvas"><span class="cs-pill">AFTER REVAMP</span><video autoplay loop muted playsinline aria-label="Pre-registration landing page after revamp"><source src="assets/landing.webm" type="video/webm" /></video></figure>
+          <div class="cs-hmw">
+            <p class="cs-hmw__q"><span class="cs-hmw__num">01.</span><span>HMW help sellers know this page is for them and feel ready to start so fewer drop off before they begin?</span></p>
+            <ul class="cs-checks">
+              <li>Help users differentiate between sellers and creator sign up more clearly by improving the copywriting &amp; add visual support to explain this.</li>
+              <li>Prepare sellers for the next registration step and motivate them with tailored, localized content.</li>
+            </ul>
+          </div>
+          <div class="cs-annotated">
+            <div class="cs-figure cs-figure--ph" data-ph="Full landing page — annotated" style="min-height:420px"></div>
+            <ul class="cs-annotated__notes">
+              <li>Clear copy + visuals indicate the page is for seller sign up.</li>
+              <li>Add visual support to emphasize selling experience.</li>
+              <li>Provide resource box for highlighting 3 easy steps to act as sellers.</li>
+              <li>Add document to prepare sellers for each business type.</li>
+              <li>Show testimonials from local sellers for each country as an encouragement.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- STAGE 2: REGISTRATION -->
+      <section id="registration" class="cs-section cs-stage reveal">
+
+        <!-- concept testing -->
+        <div class="cs-block">
+          <h2 class="cs-h2"><span class="sans-light">How might we reduce the perception of complexity in the registration form? </span><span class="serif-accent">2 different concepts were tested</span></h2>
+          <div class="cs-concepts__grid">
+            <div class="cs-concept">
+              <span class="cs-concept__num">01.</span>
+              <h3 class="cs-concept__title">Step-by-step approach</h3>
+              <p class="cs-body">One section at a time, with a progress bar showing how far along the seller is. Each step is focused and contained but sellers can't see what's coming next.</p>
+              <div class="cs-figure cs-figure--ph" data-ph="Stepper concept"></div>
+              <div class="cs-prc"><p class="cs-eyebrow cs-prc__h">PROS</p><p class="cs-body">"It felt manageable. I didn't feel like I had to do everything at once."</p></div>
+              <div class="cs-prc"><p class="cs-eyebrow cs-prc__h cs-prc__h--con">CONS</p><p class="cs-body">But sellers still wanted to know what was ahead. The hidden steps created mild anxiety about the unknown.</p></div>
+            </div>
+            <div class="cs-concept">
+              <span class="cs-concept__num">02.</span>
+              <h3 class="cs-concept__title">Long scroll</h3>
+              <p class="cs-body">All sections visible on one page, grouped under clear headers. Sellers can see the full picture before they start and review everything before submitting.</p>
+              <div class="cs-figure cs-figure--ph" data-ph="Long-scroll concept"></div>
+              <div class="cs-prc"><p class="cs-eyebrow cs-prc__h">PROS</p><p class="cs-body">"I liked being able to check everything before I submitted."</p></div>
+              <div class="cs-prc"><p class="cs-eyebrow cs-prc__h cs-prc__h--con">CONS</p><p class="cs-body">But the initial view of the full form made several sellers hesitate before they'd even started.</p></div>
+            </div>
+          </div>
+          <p class="cs-callout">Neither concept was the answer on its own. What sellers actually needed was the focused, one-thing-at-a-time feeling of the stepper combined with the transparency of the scroll.</p>
+        </div>
+
+        <!-- main issues -->
+        <div class="cs-block cs-issues">
+          <div class="cs-issues__list">
+            <p class="cs-eyebrow">REGISTRATION / MAIN ISSUES</p>
+            <div class="cs-issue"><span class="cs-issue__num">01.</span><div><h3 class="cs-issue__title">The form felt harder than it actually was</h3><p class="cs-body">All fields loaded at once with no sense of progress. Sellers perceived the task as overwhelming before filling a single field.</p></div></div>
+            <div class="cs-issue"><span class="cs-issue__num">02.</span><div><h3 class="cs-issue__title">Some are not prepared enough for the next step hence drop halfway.</h3><p class="cs-body">Instructions for which files to upload weren't connected to the fields they explained. Sellers missed them entirely and guessed instead.</p></div></div>
+          </div>
+          <div class="cs-insight cs-insight--card">
+            <p class="cs-eyebrow">DATA INSIGHTS</p>
+            <p class="cs-insight__stat">66%</p>
+            <p class="cs-body">Sellers drop halfway in this form as they are not prepared of what to submit.</p>
+          </div>
+        </div>
+
+        <!-- solution 1: combined concept -->
+        <div class="cs-block">
+          <p class="cs-eyebrow">REGISTRATION / SOLUTION</p>
+          <h2 class="cs-h2"><span class="sans-light">Combined concept: a scrollable form with </span><span class="serif-accent">progressive disclosure</span></h2>
+          <div class="cs-hmw">
+            <p class="cs-hmw__q"><span class="cs-hmw__num">01.</span><span>HMW make the registration form feel simple enough that sellers don't get overwhelmed and quit?</span></p>
+            <ul class="cs-checks">
+              <li>Progressive disclosure: break the form into sections and grey out upcoming ones, so sellers focus on one step at a time.</li>
+              <li>Remove unnecessary information or content.</li>
+              <li>Group related information under one section, e.g. business type and identity/business verification.</li>
+            </ul>
+          </div>
+          <div class="cs-beforeafter">
+            <figure class="cs-figure"><figcaption class="cs-figure__cap">Before revamp</figcaption><img src="assets/cs-reg-beforeafter.png" alt="Registration form before the revamp" /></figure>
+            <figure class="cs-figure"><figcaption class="cs-figure__cap">After revamp</figcaption><img src="assets/cs-reg-after.png" alt="Registration form after the revamp" /></figure>
+          </div>
+        </div>
+
+        <!-- solution 2: guidance -->
+        <div class="cs-block">
+          <div class="cs-hmw">
+            <p class="cs-hmw__q"><span class="cs-hmw__num">02.</span><span>HMW provide more detailed guidance to reduce errors and ease cognitive load?</span></p>
+            <ul class="cs-checks">
+              <li>Guide users on how to upload documents in more detail; e.g. 1 page vs multiple pages.</li>
+              <li>Guide users on where to locate the relevant information within their documents.</li>
+              <li>Use visual cues to help users better connect the left section and guidance.</li>
+            </ul>
+          </div>
+          <div class="cs-gallery">
+            <div class="cs-figure cs-figure--ph" data-ph="Example guidance"></div>
+            <div class="cs-figure cs-figure--ph" data-ph="ID upload guidance"></div>
+            <div class="cs-figure cs-figure--ph" data-ph="Business info guidance"></div>
+            <div class="cs-figure cs-figure--ph" data-ph="Business type guidance"></div>
+            <div class="cs-figure cs-figure--ph" data-ph="Selfie guidance"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STAGE 3: POST-REGISTRATION -->
+      <section id="post-registration" class="cs-section cs-stage reveal">
+        <div class="cs-block cs-issues">
+          <div class="cs-issues__list">
+            <p class="cs-eyebrow">POST-REGISTRATION / MAIN ISSUES</p>
+            <div class="cs-issue"><span class="cs-issue__num">01.</span><div><h3 class="cs-issue__title">Sellers don't realize they can start setting up their store during review so they wait and do nothing.</h3><p class="cs-body">This suggests low awareness and a lack of intuitive guidance on what they can do in Seller Center while waiting for the review results.</p></div></div>
+            <div class="cs-issue"><span class="cs-issue__num">02.</span><div><h3 class="cs-issue__title">Submission status was unclear. Rejected sellers had to check their email with no guidance on what to fix.</h3><p class="cs-body">No in-app rejection reasons, no guidance on how to fix it and avoid another rejection.</p></div></div>
+          </div>
+          <div class="cs-insight">
+            <p class="cs-eyebrow">SURVEY INSIGHTS</p>
+            <p class="cs-body cs-insight__text--serif">For sellers who experience rejection (18.4%), there are significant clarity issues regarding the reason for rejection and the next steps required. This lack of clarity will potentially make it difficult for sellers to address the issue and successfully reapply.</p>
+          </div>
+        </div>
+
+        <div class="cs-block">
+          <p class="cs-eyebrow">POST-REGISTRATION / SOLUTION</p>
+          <h2 class="cs-h2"><span class="sans-light">Entry point: improve information hierarchy along with </span><span class="serif-accent">clear action items</span></h2>
+          <figure class="cs-canvas cs-canvas--dark"><span class="cs-pill">AFTER REVAMP</span><div class="cs-figure cs-figure--ph" data-ph="Post-registration homepage — after revamp" style="min-height:340px;background:transparent"></div></figure>
+          <div class="cs-hmw">
+            <p class="cs-hmw__q"><span class="cs-hmw__num">01.</span><span>Help sellers identify and guide them to resolve issues more seamlessly.</span></p>
+            <ul class="cs-checks">
+              <li>Give identifier only on fields that need to be fixed.</li>
+              <li>Provide rejected reason on each field along with guidance to help sellers resolve it.</li>
+              <li>Provide CTA to help users navigate between issues.</li>
+            </ul>
+          </div>
+          <div class="cs-beforeafter">
+            <div class="cs-figure cs-figure--ph" data-ph="Fix issue guidance" style="min-height:300px"></div>
+            <div class="cs-figure cs-figure--ph" data-ph="Issue updated" style="min-height:300px"></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- IMPACT (full-bleed dark) -->
+  <section id="impact" class="cs-impact reveal">
+    <div class="cs-impact__inner">
+      <p class="cs-eyebrow cs-eyebrow--dark">DESIGN IMPACT</p>
+      <h2 class="cs-impact__headline"><span class="serif-accent">Every stage of onboarding improved:</span> more sellers in, more selling, higher satisfaction.</h2>
+
+      <div class="cs-metrics">
+        <div class="cs-metric">
+          <p class="cs-metric__desc">Onboarding completion: more sellers finished registration and got approved</p>
+          <p class="cs-metric__num">+8.85%</p>
+        </div>
+        <div class="cs-metric">
+          <p class="cs-metric__desc">Activation rate: more approved sellers went on to sell actively</p>
+          <p class="cs-metric__num">+4pp</p>
+        </div>
+        <div class="cs-metric">
+          <p class="cs-metric__desc">Seller satisfaction (CSAT): higher rating on a 5-point scale (+0.28)</p>
+          <p class="cs-metric__num">4.83</p>
+        </div>
+      </div>
+
+      <div class="cs-signal">
+        <div class="cs-signal__intro">
+          <p class="cs-eyebrow cs-eyebrow--dark">SUPPORTING SIGNAL</p>
+          <p class="cs-signal__lead"><span class="serif-accent">Additional data proves</span> friction dropped across the flow</p>
+        </div>
+        <div class="cs-signal__stats">
+          <div class="cs-sstat"><span class="cs-sstat__num">+28.33%</span><span class="cs-sstat__label">Form submission rate</span></div>
+          <div class="cs-sstat"><span class="cs-sstat__num">&minus;10.40%</span><span class="cs-sstat__label">Time taken to submit the form (55 mins less)</span></div>
+          <div class="cs-sstat"><span class="cs-sstat__num">&minus;12.5%</span><span class="cs-sstat__label">Sellers who found shop setup difficult</span></div>
+          <div class="cs-sstat"><span class="cs-sstat__num">&minus;75%</span><span class="cs-sstat__label">Sellers who found status updates unclear</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

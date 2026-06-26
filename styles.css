@@ -1,4 +1,5 @@
 :root {
+  color-scheme: light;            /* opt out of browser auto dark-mode inversion */
   --bg: #fdfdfd;
   --black: #202020;
   --body: #666;
@@ -12,7 +13,10 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
-  -webkit-font-smoothing: antialiased;
+  /* Use the OS default (subpixel) smoothing so Light/300 weights render with
+     fuller strokes — matching Figma. `antialiased` here forces grayscale AA on
+     macOS, which makes text look noticeably thinner/lighter. */
+  -webkit-font-smoothing: subpixel-antialiased;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
 }
