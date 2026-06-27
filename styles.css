@@ -1,13 +1,13 @@
 :root {
   color-scheme: light;            /* opt out of browser auto dark-mode inversion */
   --bg: #fdfdfd;
-  --black: #202020;
+  --black: #000;
   --body: #666;
   --overline: #bdbdbd;
   --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --serif: "IBM Plex Serif", Georgia, serif;
   --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  --pad: 120px;
+  --pad: 160px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }

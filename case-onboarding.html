@@ -41,17 +41,17 @@
         </h1>
         <div class="cs-tags reveal">
           <img class="cs-tags__logo" src="assets/cs-tiktok.png" alt="" />
-          <span >TIKTOK SHOP</span>
+          <span class="cs-tags__sep">TIKTOK SHOP</span>
           <span class="cs-tags__sep">/</span>
           <span>DESIGN &amp; USER RESEARCH</span>
         </div>
         <figure class="cs-figure cs-figure--hero reveal">
           <div class="cs-hero-stage">
-            <video class="cs-hero-stage__bg" autoplay loop muted playsinline aria-hidden="true"><source src="assets/hero-1.webm" type="video/webm" /></video>
+            <video class="cs-hero-stage__bg" loop muted playsinline preload="metadata" aria-hidden="true"><source src="assets/hero-1.webm" type="video/webm" /></video>
             <div class="cs-glass">
               <div class="cs-browser">
                 <img class="cs-window__bar" src="assets/cs-window-bar.png" alt="" aria-hidden="true" />
-                <video class="cs-window__shot" autoplay loop muted playsinline aria-label="TikTok Shop Seller Center onboarding flow"><source src="assets/hero-2.webm" type="video/webm" /></video>
+                <video class="cs-window__shot" loop muted playsinline preload="metadata" aria-label="TikTok Shop Seller Center onboarding flow"><source src="assets/hero-2.webm" type="video/webm" /></video>
               </div>
             </div>
           </div>
@@ -78,7 +78,7 @@
       <section id="challenge" class="cs-section reveal">
         <p class="cs-eyebrow">CHALLENGE</p>
         <h2 class="cs-h2">Nobody quits because selling is hard. They quit because signing up is.</h2>
-        <p class="cs-body cs-body--lead">When seller registrations in SEA dropped 3% MoM, it was tempting to blame market conditions. Our audit proved otherwise: the problem wasn't a lack of interest, but a broken onboarding experience.</p>
+        <p class="cs-body">When seller registrations in SEA dropped 3% MoM, it was tempting to blame market conditions. Our audit proved otherwise: the problem wasn't a lack of interest, but a broken onboarding experience.</p>
         <figure class="cs-figure cs-figure--chart">
           <img src="assets/cs-chart.png" alt="Line chart: sellers onboarded vs registered, monthly Apr–Dec 2024" />
         </figure>
@@ -89,10 +89,10 @@
         <div>
           <p class="cs-eyebrow">DESIGN STRATEGY</p>
           <ol class="cs-steps">
-            <li class="cs-step"><span class="cs-step__num">01.</span><div><h3 class="cs-step__title">Design Audit</h3><p class="cs-step__desc">Audit existing design to map out the journey and identify issues theme.</p></div></li>
-            <li class="cs-step"><span class="cs-step__num">02.</span><div><h3 class="cs-step__title">Workshop</h3><p class="cs-step__desc">Workshop with cross-functional team to identify hidden issues from ops &amp; product team.</p></div></li>
-            <li class="cs-step"><span class="cs-step__num">03.</span><div><h3 class="cs-step__title">Develop UI &amp; User Testing</h3><p class="cs-step__desc">Moderated testing with sellers in PH and MY.</p></div></li>
-            <li class="cs-step"><span class="cs-step__num">04.</span><div><h3 class="cs-step__title">Iterate Design</h3><p class="cs-step__desc">Iterated the design based on findings.</p></div></li>
+            <li class="cs-step"><span class="cs-step__num">01.</span><div><h3 class="cs-step__title">Design Audit</h3><p class="cs-body">Audit existing design to map out the journey and identify issues theme.</p></div></li>
+            <li class="cs-step"><span class="cs-step__num">02.</span><div><h3 class="cs-step__title">Workshop</h3><p class="cs-body">Workshop with cross-functional team to identify hidden issues from ops &amp; product team.</p></div></li>
+            <li class="cs-step"><span class="cs-step__num">03.</span><div><h3 class="cs-step__title">Develop UI &amp; User Testing</h3><p class="cs-body">Moderated testing with sellers in PH and MY.</p></div></li>
+            <li class="cs-step"><span class="cs-step__num">04.</span><div><h3 class="cs-step__title">Iterate Design</h3><p class="cs-body">Iterated the design based on findings.</p></div></li>
           </ol>
         </div>
         <figure class="cs-figure cs-strategy__img">
@@ -106,19 +106,19 @@
         <div class="cs-funnel">
           <div class="cs-funnel__col">
             <p class="cs-funnel__num">01.</p>
-            <div class="cs-figure cs-figure--ph cs-funnel__shot" data-ph="Landing page"></div>
+            <figure class="cs-figure cs-funnel__shot"><img src="assets/cs-funnel-landing.png" alt="Landing page" /></figure>
             <p class="cs-eyebrow">PRE-REGISTRATION</p>
             <p class="cs-funnel__label">Landing page</p>
           </div>
           <div class="cs-funnel__col">
             <p class="cs-funnel__num">02.</p>
-            <div class="cs-figure cs-figure--ph cs-funnel__shot" data-ph="Registration form"></div>
+            <figure class="cs-figure cs-funnel__shot"><img src="assets/cs-funnel-reg.png" alt="Registration form" /></figure>
             <p class="cs-eyebrow">REGISTRATION</p>
             <p class="cs-funnel__label">Registration form</p>
           </div>
           <div class="cs-funnel__col">
             <p class="cs-funnel__num">03.</p>
-            <div class="cs-figure cs-figure--ph cs-funnel__shot" data-ph="Homepage"></div>
+            <figure class="cs-figure cs-funnel__shot"><img src="assets/cs-funnel-home.png" alt="Homepage &amp; Registration Page" /></figure>
             <p class="cs-eyebrow">POST-REGISTRATION</p>
             <p class="cs-funnel__label">Homepage &amp; Registration Page</p>
           </div>
@@ -127,29 +127,41 @@
 
       <!-- STAGE 1: PRE-REGISTRATION -->
       <section id="pre-registration" class="cs-section cs-stage reveal">
-        <div class="cs-block cs-issues">
-          <div class="cs-issues__list">
-            <p class="cs-eyebrow">PRE-REGISTRATION / MAIN ISSUES</p>
-            <div class="cs-issue"><span class="cs-issue__num">01.</span><div><h3 class="cs-issue__title">Visitors mistake the seller signup for creator signup</h3><p class="cs-body">They often mistake the seller registration landing page as the entry point to sign up as a content-creator.</p></div></div>
-            <div class="cs-issue"><span class="cs-issue__num">02.</span><div><h3 class="cs-issue__title">Some are not prepared enough for the next step hence drop halfway.</h3><p class="cs-body">The main reason for not completing registration is missing required documents, as they were not fully prepared before starting the application.</p></div></div>
+        <div class="cs-block">
+          <div class="cs-issues">
+            <div class="cs-issues__list">
+              <p class="cs-eyebrow">PRE-REGISTRATION / MAIN ISSUES</p>
+              <div class="cs-issue"><span class="cs-issue__num">01.</span><div><h3 class="cs-issue__title">Visitors mistake the seller signup for creator signup</h3><p class="cs-body">They often mistake the seller registration landing page as the entry point to sign up as a content-creator.</p></div></div>
+              <div class="cs-issue"><span class="cs-issue__num">02.</span><div><h3 class="cs-issue__title">Some are not prepared enough for the next step hence drop halfway.</h3><p class="cs-body">The main reason for not completing registration is missing required documents, as they were not fully prepared before starting the application.</p></div></div>
+            </div>
+            <div class="cs-insight">
+              <p class="cs-eyebrow">SURVEY INSIGHTS</p>
+              <p class="cs-body">While most sellers proactively seek information before registration, many still face challenges in understanding the process. Clarity issues, especially the complexity of information and lack of examples for required documents, remain a concern.</p>
+            </div>
           </div>
-          <div class="cs-insight">
-            <p class="cs-eyebrow">SURVEY INSIGHTS</p>
-            <p class="cs-body cs-insight__text--serif">While most sellers proactively seek information before registration, many still face challenges in understanding the process. Clarity issues, especially the complexity of information and lack of examples for required documents, remain a concern.</p>
-          </div>
+
+          <figure class="cs-before cs-before--before reveal">
+            <span class="cs-pill cs-pill--light">BEFORE REVAMP</span>
+            <div class="cs-before__frame">
+              <video loop muted playsinline preload="metadata" aria-label="Pre-revamp TikTok Shop PH seller registration landing page"><source src="assets/before-landing.webm" type="video/webm" /></video>
+            </div>
+          </figure>
         </div>
 
-        <figure class="cs-before reveal">
-          <span class="cs-pill cs-pill--light">BEFORE REVAMP</span>
-          <div class="cs-before__frame">
-            <video autoplay loop muted playsinline aria-label="Pre-revamp TikTok Shop PH seller registration landing page"><source src="assets/before-landing.webm" type="video/webm" /></video>
-          </div>
-        </figure>
-
         <div class="cs-block">
-          <p class="cs-eyebrow">PRE-REGISTRATION / SOLUTION</p>
-          <h2 class="cs-h2"><span class="serif-accent">Prepare sellers better</span><span class="sans-light"> before they kick start their business</span></h2>
-          <figure class="cs-canvas"><span class="cs-pill">AFTER REVAMP</span><video autoplay loop muted playsinline aria-label="Pre-registration landing page after revamp"><source src="assets/landing.webm" type="video/webm" /></video></figure>
+          <div class="cs-head">
+            <p class="cs-eyebrow">PRE-REGISTRATION / SOLUTION</p>
+            <h2 class="cs-h2"><span class="serif-accent">Prepare sellers better</span><span class="sans-light"> before they kick start their business</span></h2>
+          </div>
+          <figure class="cs-before cs-before--after reveal">
+            <span class="cs-pill cs-pill--light">AFTER REVAMP</span>
+            <div class="cs-before__frame">
+              <div class="cs-before__win">
+                <img src="assets/cs-window-bar.png" alt="" aria-hidden="true" />
+                <video loop muted playsinline preload="metadata" aria-label="Pre-registration landing page after revamp"><source src="assets/landing.webm" type="video/webm" /></video>
+              </div>
+            </div>
+          </figure>
           <div class="cs-hmw">
             <p class="cs-hmw__q"><span class="cs-hmw__num">01.</span><span>HMW help sellers know this page is for them and feel ready to start so fewer drop off before they begin?</span></p>
             <ul class="cs-checks">
@@ -157,44 +169,49 @@
               <li>Prepare sellers for the next registration step and motivate them with tailored, localized content.</li>
             </ul>
           </div>
-          <div class="cs-annotated">
-            <div class="cs-figure cs-figure--ph" data-ph="Full landing page — annotated" style="min-height:420px"></div>
-            <ul class="cs-annotated__notes">
-              <li>Clear copy + visuals indicate the page is for seller sign up.</li>
-              <li>Add visual support to emphasize selling experience.</li>
-              <li>Provide resource box for highlighting 3 easy steps to act as sellers.</li>
-              <li>Add document to prepare sellers for each business type.</li>
-              <li>Show testimonials from local sellers for each country as an encouragement.</li>
-            </ul>
-          </div>
+          <figure class="cs-figure">
+            <img src="assets/cs-prereg-annotated.png" alt="Annotated redesigned landing page: clearer seller sign-up copy, selling-experience visuals, a 3-easy-steps resource box, document prep per business type, and local seller testimonials" />
+          </figure>
         </div>
       </section>
 
       <!-- STAGE 2: REGISTRATION -->
       <section id="registration" class="cs-section cs-stage reveal">
 
-        <!-- concept testing -->
-        <div class="cs-block">
+        <!-- concept testing (full-bleed tinted band) -->
+        <div class="cs-band">
           <h2 class="cs-h2"><span class="sans-light">How might we reduce the perception of complexity in the registration form? </span><span class="serif-accent">2 different concepts were tested</span></h2>
           <div class="cs-concepts__grid">
             <div class="cs-concept">
-              <span class="cs-concept__num">01.</span>
-              <h3 class="cs-concept__title">Step-by-step approach</h3>
-              <p class="cs-body">One section at a time, with a progress bar showing how far along the seller is. Each step is focused and contained but sellers can't see what's coming next.</p>
-              <div class="cs-figure cs-figure--ph" data-ph="Stepper concept"></div>
-              <div class="cs-prc"><p class="cs-eyebrow cs-prc__h">PROS</p><p class="cs-body">"It felt manageable. I didn't feel like I had to do everything at once."</p></div>
-              <div class="cs-prc"><p class="cs-eyebrow cs-prc__h cs-prc__h--con">CONS</p><p class="cs-body">But sellers still wanted to know what was ahead. The hidden steps created mild anxiety about the unknown.</p></div>
+              <div class="cs-concept__head">
+                <div class="cs-concept__titles">
+                  <span class="cs-concept__num">01.</span>
+                  <h3 class="cs-concept__title">Step-by-step approach</h3>
+                </div>
+                <p class="cs-body">One section at a time, with a progress bar showing how far along the seller is. Each step is focused and contained but sellers can't see what's coming next.</p>
+              </div>
+              <figure class="cs-concept__img"><video loop muted playsinline preload="metadata" aria-label="Step-by-step (stepper) registration concept"><source src="assets/cs-concept-stepper.webm" type="video/webm" /></video></figure>
+              <div class="cs-concept__prc">
+                <div class="cs-prc"><p class="cs-prc__label">PROS</p><p class="cs-prc__text cs-prc__text--pro">"It felt manageable. I didn't feel like I had to do everything at once."</p></div>
+                <div class="cs-prc"><p class="cs-prc__label">CONS</p><p class="cs-body">But sellers still wanted to know what was ahead. The hidden steps created mild anxiety about the unknown.</p></div>
+              </div>
             </div>
             <div class="cs-concept">
-              <span class="cs-concept__num">02.</span>
-              <h3 class="cs-concept__title">Long scroll</h3>
-              <p class="cs-body">All sections visible on one page, grouped under clear headers. Sellers can see the full picture before they start and review everything before submitting.</p>
-              <div class="cs-figure cs-figure--ph" data-ph="Long-scroll concept"></div>
-              <div class="cs-prc"><p class="cs-eyebrow cs-prc__h">PROS</p><p class="cs-body">"I liked being able to check everything before I submitted."</p></div>
-              <div class="cs-prc"><p class="cs-eyebrow cs-prc__h cs-prc__h--con">CONS</p><p class="cs-body">But the initial view of the full form made several sellers hesitate before they'd even started.</p></div>
+              <div class="cs-concept__head">
+                <div class="cs-concept__titles">
+                  <span class="cs-concept__num">02.</span>
+                  <h3 class="cs-concept__title">Long scroll</h3>
+                </div>
+                <p class="cs-body">All sections visible on one page, grouped under clear headers. Sellers can see the full picture before they start and review everything before submitting.</p>
+              </div>
+              <figure class="cs-concept__img"><video loop muted playsinline preload="metadata" aria-label="Long-scroll registration concept"><source src="assets/cs-concept-scroll.webm" type="video/webm" /></video></figure>
+              <div class="cs-concept__prc">
+                <div class="cs-prc"><p class="cs-prc__label">PROS</p><p class="cs-prc__text cs-prc__text--pro">"I liked being able to check everything before I submitted."</p></div>
+                <div class="cs-prc"><p class="cs-prc__label">CONS</p><p class="cs-body">But the initial view of the full form made several sellers hesitate before they'd even started.</p></div>
+              </div>
             </div>
           </div>
-          <p class="cs-callout">Neither concept was the answer on its own. What sellers actually needed was the focused, one-thing-at-a-time feeling of the stepper combined with the transparency of the scroll.</p>
+          <p class="cs-callout"><span class="serif-accent">Neither concept</span> was the answer on its own. What sellers actually needed was the focused, one-thing-at-a-time feeling of the stepper combined with the transparency of the scroll.</p>
         </div>
 
         <!-- main issues -->
@@ -213,8 +230,19 @@
 
         <!-- solution 1: combined concept -->
         <div class="cs-block">
-          <p class="cs-eyebrow">REGISTRATION / SOLUTION</p>
-          <h2 class="cs-h2"><span class="sans-light">Combined concept: a scrollable form with </span><span class="serif-accent">progressive disclosure</span></h2>
+          <div class="cs-head">
+            <p class="cs-eyebrow">REGISTRATION / SOLUTION</p>
+            <h2 class="cs-h2"><span class="sans-light">Combined concept: a scrollable form with </span><span class="serif-accent">progressive disclosure</span></h2>
+          </div>
+          <figure class="cs-before cs-before--after reveal">
+            <span class="cs-pill cs-pill--light">AFTER REVAMP</span>
+            <div class="cs-before__frame">
+              <div class="cs-before__win">
+                <img src="assets/cs-window-bar.png" alt="" aria-hidden="true" />
+                <video loop muted playsinline preload="metadata" aria-label="Redesigned registration form with progressive disclosure"><source src="assets/cs-reg-form.webm" type="video/webm" /></video>
+              </div>
+            </div>
+          </figure>
           <div class="cs-hmw">
             <p class="cs-hmw__q"><span class="cs-hmw__num">01.</span><span>HMW make the registration form feel simple enough that sellers don't get overwhelmed and quit?</span></p>
             <ul class="cs-checks">
@@ -223,10 +251,9 @@
               <li>Group related information under one section, e.g. business type and identity/business verification.</li>
             </ul>
           </div>
-          <div class="cs-beforeafter">
-            <figure class="cs-figure"><figcaption class="cs-figure__cap">Before revamp</figcaption><img src="assets/cs-reg-beforeafter.png" alt="Registration form before the revamp" /></figure>
-            <figure class="cs-figure"><figcaption class="cs-figure__cap">After revamp</figcaption><img src="assets/cs-reg-after.png" alt="Registration form after the revamp" /></figure>
-          </div>
+          <figure class="cs-figure">
+            <img src="assets/cs-reg-compare.png" alt="Registration form before vs after the revamp — the redesign reduces scroll depth" />
+          </figure>
         </div>
 
         <!-- solution 2: guidance -->
@@ -239,13 +266,9 @@
               <li>Use visual cues to help users better connect the left section and guidance.</li>
             </ul>
           </div>
-          <div class="cs-gallery">
-            <div class="cs-figure cs-figure--ph" data-ph="Example guidance"></div>
-            <div class="cs-figure cs-figure--ph" data-ph="ID upload guidance"></div>
-            <div class="cs-figure cs-figure--ph" data-ph="Business info guidance"></div>
-            <div class="cs-figure cs-figure--ph" data-ph="Business type guidance"></div>
-            <div class="cs-figure cs-figure--ph" data-ph="Selfie guidance"></div>
-          </div>
+          <figure class="cs-figure">
+            <img src="assets/cs-reg-guidance.png" alt="Document-upload guidance designs: example guidance, business type, selfie, ID upload, and business info guidance" />
+          </figure>
         </div>
       </section>
 
@@ -259,14 +282,21 @@
           </div>
           <div class="cs-insight">
             <p class="cs-eyebrow">SURVEY INSIGHTS</p>
-            <p class="cs-body cs-insight__text--serif">For sellers who experience rejection (18.4%), there are significant clarity issues regarding the reason for rejection and the next steps required. This lack of clarity will potentially make it difficult for sellers to address the issue and successfully reapply.</p>
+            <p class="cs-body">For sellers who experience rejection (18.4%), there are significant clarity issues regarding the reason for rejection and the next steps required. This lack of clarity will potentially make it difficult for sellers to address the issue and successfully reapply.</p>
           </div>
         </div>
 
         <div class="cs-block">
-          <p class="cs-eyebrow">POST-REGISTRATION / SOLUTION</p>
-          <h2 class="cs-h2"><span class="sans-light">Entry point: improve information hierarchy along with </span><span class="serif-accent">clear action items</span></h2>
-          <figure class="cs-canvas cs-canvas--dark"><span class="cs-pill">AFTER REVAMP</span><div class="cs-figure cs-figure--ph" data-ph="Post-registration homepage — after revamp" style="min-height:340px;background:transparent"></div></figure>
+          <div class="cs-head">
+            <p class="cs-eyebrow">POST-REGISTRATION / SOLUTION</p>
+            <h2 class="cs-h2"><span class="sans-light">Entry point: improve information hierarchy along with </span><span class="serif-accent">clear action items</span></h2>
+          </div>
+          <figure class="cs-before cs-before--after reveal">
+            <span class="cs-pill cs-pill--light">AFTER REVAMP</span>
+            <div class="cs-before__frame">
+              <img src="assets/cs-postreg-home.png" alt="Post-registration homepage after revamp" />
+            </div>
+          </figure>
           <div class="cs-hmw">
             <p class="cs-hmw__q"><span class="cs-hmw__num">01.</span><span>Help sellers identify and guide them to resolve issues more seamlessly.</span></p>
             <ul class="cs-checks">
@@ -275,10 +305,9 @@
               <li>Provide CTA to help users navigate between issues.</li>
             </ul>
           </div>
-          <div class="cs-beforeafter">
-            <div class="cs-figure cs-figure--ph" data-ph="Fix issue guidance" style="min-height:300px"></div>
-            <div class="cs-figure cs-figure--ph" data-ph="Issue updated" style="min-height:300px"></div>
-          </div>
+          <figure class="cs-figure">
+            <img src="assets/cs-postreg-solution.png" alt="Post-registration after revamp: per-field issue identifiers with fix guidance and an issue counter for navigation, plus the fix-issue and issue-updated states" />
+          </figure>
         </div>
       </section>
 
@@ -312,10 +341,10 @@
           <p class="cs-signal__lead"><span class="serif-accent">Additional data proves</span> friction dropped across the flow</p>
         </div>
         <div class="cs-signal__stats">
-          <div class="cs-sstat"><span class="cs-sstat__num">+28.33%</span><span class="cs-sstat__label">Form submission rate</span></div>
-          <div class="cs-sstat"><span class="cs-sstat__num">&minus;10.40%</span><span class="cs-sstat__label">Time taken to submit the form (55 mins less)</span></div>
-          <div class="cs-sstat"><span class="cs-sstat__num">&minus;12.5%</span><span class="cs-sstat__label">Sellers who found shop setup difficult</span></div>
-          <div class="cs-sstat"><span class="cs-sstat__num">&minus;75%</span><span class="cs-sstat__label">Sellers who found status updates unclear</span></div>
+          <div class="cs-sstat"><span class="cs-sstat__num">+28.33%</span><span class="cs-metric__desc">Form submission rate</span></div>
+          <div class="cs-sstat"><span class="cs-sstat__num">&minus;10.40%</span><span class="cs-metric__desc">Time taken to submit the form (55 mins less)</span></div>
+          <div class="cs-sstat"><span class="cs-sstat__num">&minus;12.5%</span><span class="cs-metric__desc">Sellers who found shop setup difficult</span></div>
+          <div class="cs-sstat"><span class="cs-sstat__num">&minus;75%</span><span class="cs-metric__desc">Sellers who found status updates unclear</span></div>
         </div>
       </div>
     </div>

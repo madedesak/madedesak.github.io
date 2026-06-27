@@ -103,11 +103,40 @@
     });
   }
 
+  function safePlay(video) {
+    var p = video.play();
+    if (p && typeof p.catch === "function") p.catch(function () {});
+  }
+
+  // Play each <video> only while it's in the viewport; pause it once it scrolls
+  // out. Saves CPU/bandwidth versus autoplaying every clip on load.
+  function wireVideoPlayback() {
+    var videos = document.querySelectorAll("video");
+    if (!videos.length) return;
+    if (prefersReducedMotion()) return; // honour reduced-motion: leave paused
+    if (!("IntersectionObserver" in window)) {
+      videos.forEach(safePlay);
+      return;
+    }
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) safePlay(entry.target);
+          else entry.target.pause();
+        });
+      },
+      // start as soon as any part enters, pause once fully out of view
+      { threshold: 0, rootMargin: "0px 0px -5% 0px" }
+    );
+    videos.forEach(function (v) { io.observe(v); });
+  }
+
   function init() {
     onResize();
     wireNavAnchors();
     wireScrollReveal();
     wireScrollSpy();
+    wireVideoPlayback();
   }
 
   if (document.readyState === "loading") {
