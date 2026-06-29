@@ -243,6 +243,35 @@ a { color: inherit; text-decoration: none; }
    "px" measurement brackets) is exported straight from Figma as one image */
 .case__shot { display: block; width: 100%; height: auto; }
 
+/* ---------- DESIGN ARCHIVE ---------- */
+.archive-head { padding-top: 40px; }
+.archive__back {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-weight: 300; font-size: 12px; letter-spacing: 1.44px;
+  color: var(--overline); transition: color 0.2s ease;
+}
+.archive__back:hover { color: var(--black); }
+.archive__back svg { width: 16px; height: 16px; }
+.archive__title { margin-top: 28px; font-size: 38px; line-height: 1.2; font-weight: 300; letter-spacing: -0.6px; max-width: 600px; }
+.archive { padding-top: 72px; padding-bottom: 120px; }
+.archive__grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; row-gap: 60px; }
+.archive__card { display: flex; flex-direction: column; }
+.archive__shot { aspect-ratio: 580 / 338; border-radius: 12px; overflow: hidden; background: #f3f3f4; }
+.archive__shot img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.archive__card:hover .archive__shot img { transform: scale(1.03); }
+.archive__meta { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-top: 16px; }
+.archive__name { font-family: var(--sans); font-weight: 300; font-size: 15px; color: var(--black); }
+.archive__tag { font-family: var(--mono); font-weight: 300; font-size: 11px; letter-spacing: 1px; color: var(--overline); white-space: nowrap; }
+/* progressive blur fixed to the bottom of the viewport: content sits frosted at
+   the bottom edge and sharpens as it scrolls up out of the band */
+.scroll-blur {
+  position: fixed; left: 0; right: 0; bottom: 0;
+  height: 190px; z-index: 60; pointer-events: none;
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  -webkit-mask-image: linear-gradient(to top, #000 0%, #000 12%, transparent 88%);
+          mask-image: linear-gradient(to top, #000 0%, #000 12%, transparent 88%);
+}
+
 /* ---------- EXPERIENCE ---------- */
 .experience { display: flex; justify-content: space-between; align-items: flex-start; padding-top: 120px; padding-bottom: 120px; gap: 60px; }
 .experience__heading { display: flex; align-items: center; gap: 8px; font-size: 32px; white-space: nowrap; flex: 0 0 auto; }
@@ -382,6 +411,9 @@ a { color: inherit; text-decoration: none; }
 
   .case__title { font-size: 24px; }
   .experience__heading { font-size: 26px; }
+  .archive__title { font-size: 26px; }
+  .archive__grid { grid-template-columns: 1fr; row-gap: 40px; }
+  .archive { padding-top: 48px; }
 
   .footer__headline { font-size: 26px; }
   .footer__link { font-size: 12px; letter-spacing: 1.6px; padding: 16px 20px; }
