@@ -149,7 +149,7 @@
 .cs-h2 {
   font-family: var(--cs-font-sans);
   font-weight: var(--cs-fw-light);
-  font-size: var(--cs-fs-26);
+  font-size: var(--cs-fs-20);
   line-height: var(--cs-lh-heading);
   letter-spacing: var(--cs-ls-h2);
   color: var(--cs-text);
@@ -211,8 +211,6 @@
 /* ---------- figures / images ---------- */
 .cs-figure { margin: 0; }
 .cs-figure img { display: block; width: 100%; height: auto; }
-/* case-mall page: lead text group, funnel curve spacing */
-.cs-lead { display: flex; flex-direction: column; gap: 12px; }
 .cs-funnel-curve { margin-top: 40px; }
 /* annotated visual with an animated recording overlaid on its window region
    (consideration main issues) — coords from the Figma frame */
@@ -300,11 +298,11 @@
 /* ---------- HEADER ---------- */
 .cs-header { padding-top: 4px; }
 .cs-title {
-  font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-38); line-height: var(--cs-lh-title);
+  font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-30); line-height: var(--cs-lh-title);
   letter-spacing: var(--cs-ls-title); margin-top: 24px; color: var(--cs-text);
 }
 .cs-tags {
-  display: flex; align-items: center; gap: 10px; margin-top: 20px;
+  display: flex; align-items: center; gap: 10px; margin-top: 16px;
   font-family: var(--cs-font-mono); font-weight: var(--cs-fw-regular); font-size: var(--cs-fs-12); letter-spacing: var(--cs-ls-wide); color: var(--cs-text);
 }
 .cs-tags__sep, .cs-tags span:last-child { color: var(--cs-text-subtle); font-weight: var(--cs-fw-light); }
@@ -435,7 +433,7 @@
 .cs-issues__list { display: flex; flex-direction: column; gap: 22px; }
 .cs-issue { display: grid; grid-template-columns: 40px 1fr; align-items: start; }
 .cs-issue__num { font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-16); color: var(--cs-text-subtle); }
-.cs-issue__title { font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-17); line-height: var(--cs-lh-heading); color: var(--cs-text); margin-bottom: 8px; letter-spacing: var(--cs-ls-body); }
+.cs-issue__title { font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-17); line-height: var(--cs-lh-heading); color: var(--cs-text); margin-bottom: 4px; margin-top: 16px; letter-spacing: var(--cs-ls-body); }
 
 /* insight (right column) — a light card, top-aligned with the first issue */
 .cs-insight {
