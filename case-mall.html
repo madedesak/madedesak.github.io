@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>TikTok Shop Mall — Case Study — Desak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400&family=IBM+Plex+Serif:ital,wght@1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="case-study.css" />
+</head>
+<body class="cs">
+
+  <div class="cs-wrap">
+
+    <!-- STICKY SECTION NAV (left gutter) -->
+    <aside class="cs-nav" aria-label="Sections">
+      <nav class="cs-toc">
+        <a class="cs-toc__link" href="#summary">SUMMARY</a>
+        <a class="cs-toc__link" href="#challenge">CHALLENGE</a>
+        <a class="cs-toc__link" href="#journeys">KEY JOURNEYS</a>
+        <a class="cs-toc__link" href="#awareness">AWARENESS</a>
+        <a class="cs-toc__link" href="#consideration">CONSIDERATION</a>
+        <a class="cs-toc__link" href="#eligibility">ELIGIBILITY</a>
+        <a class="cs-toc__link" href="#maintain">MAINTAIN MEMBERSHIP</a>
+        <a class="cs-toc__link" href="#impact">IMPACT</a>
+      </nav>
+    </aside>
+
+    <main class="cs-main">
+
+      <!-- HEADER -->
+      <header class="cs-header">
+        <a class="cs-back" href="index.html#work">
+          <svg class="cs-back__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3 L5 8 L10 13 M5 8 H13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>BACK TO HOME</span>
+        </a>
+        <h1 class="cs-title reveal">
+          <span class="sans-light">How I convince sellers to upgrade their tier status: </span><span class="serif-accent">TikTok Shop Mall experience</span>
+        </h1>
+        <div class="cs-tags reveal">
+          <img class="cs-tags__logo" src="assets/cs-tiktok.png" alt="" />
+          <span class="cs-tags__sep">TIKTOK SHOP</span>
+          <span class="cs-tags__sep">/</span>
+          <span>DESIGN &amp; USER RESEARCH</span>
+        </div>
+        <figure class="cs-figure cs-figure--hero reveal">
+          <div class="cs-hero-stage">
+            <img class="cs-hero-stage__bg" src="assets/m-hero-bg.webp" alt="" aria-hidden="true" />
+            <div class="cs-glass">
+              <div class="cs-browser">
+                <img class="cs-window__bar" src="assets/cs-window-bar.png" alt="" aria-hidden="true" />
+                <video class="cs-window__shot" loop muted playsinline preload="metadata" aria-label="TikTok Shop Mall onboarding flow"><source src="assets/m-hero.webm" type="video/webm" /></video>
+              </div>
+            </div>
+          </div>
+        </figure>
+      </header>
+
+      <!-- SUMMARY -->
+      <section id="summary" class="cs-section cs-summary reveal">
+        <div class="cs-srow">
+          <p class="cs-eyebrow">CHALLENGE</p>
+          <p class="cs-body">TikTok Shop Mall is a curated program that signals 100% authenticated brands. Mall sellers also grow GMV faster than the platform average. But the path to membership broke down at every turn: only 5% of whitelisted sellers ever viewed the Mall page, just 18% of those who clicked &ldquo;Get started&rdquo; made it to &ldquo;eligible to apply,&rdquo; and 51% of onboarded sellers later failed to maintain criteria and were auto-offboarded.</p>
+        </div>
+        <div class="cs-srow">
+          <p class="cs-eyebrow">STRATEGY</p>
+          <p class="cs-body">I redesigned Mall program for SEA: mapping the seller journey into four stages, diagnosing friction at each with quantitative funnel data and qualitative research, then redesigning the entry point, landing page, eligibility flow, and performance-monitoring experience so more sellers could discover the program, see its value, qualify, and stay in.</p>
+        </div>
+        <div class="cs-srow">
+          <p class="cs-eyebrow">RESULT</p>
+          <p class="cs-body">In Q1 2026, weekly new Mall sellers grew by an average of +300/week (from 245 to 546), helping every country overachieve its Mall seller-supply target. Q1 daily GMV beat target across all markets, with Indonesia and Malaysia overachieving by 179% and 145% respectively.</p>
+        </div>
+      </section>
+
+      <!-- CHALLENGE -->
+      <section id="challenge" class="cs-section reveal">
+        <p class="cs-eyebrow">CHALLENGE</p>
+        <h2 class="cs-h2">Mall GMV outgrows the market in every country, unfortunately sellers never see this value</h2>
+        <p class="cs-body">Between January and June 2025 Mall sellers grew faster than the broader market in all four SEA markets: +46.3% vs +24.0% in Thailand, +42.5% vs +23.1% and so on. The clearest signal came from Vietnam, where the market shrank 10.2% but Mall still grew +3.6%. The program demonstrably works but none of that evidence ever reached the people it should convince.</p>
+        <figure class="cs-figure cs-figure--chart">
+          <img src="assets/m-challenge-chart.webp" alt="Bar chart: Mall vs market daily-avg GMV growth Jan→Jun across Thailand, Vietnam, Malaysia, Philippines" />
+        </figure>
+      </section>
+
+      <!-- KEY JOURNEYS / FUNNEL -->
+      <section id="journeys" class="cs-section reveal">
+        <h2 class="cs-h2 cs-funnel-head"><span class="serif-accent">Mall membership journey:</span><span class="sans-light"> breaking down the funnel</span></h2>
+        <figure class="cs-figure cs-funnel-curve">
+          <svg class="cs-funnel-svg" viewBox="-6 -4 810 342" role="img" aria-label="Four-stage funnel with declining volume: 01 Awareness (entry point), 02 Consideration (Mall landing page), 03 Eligibility (monitoring page), 04 Maintain membership (monitoring page)">
+            <g class="cs-funnel-svg__grid">
+              <line x1="0" y1="0" x2="0" y2="331" /><line x1="198.5" y1="0" x2="198.5" y2="331" /><line x1="397" y1="0" x2="397" y2="331" /><line x1="595.5" y1="0" x2="595.5" y2="331" /><line x1="794" y1="0" x2="794" y2="331" />
+            </g>
+            <path class="cs-funnel-svg__curve" fill="none" d="M 0,59 C 33,62 133,62 199,76 C 265,90 331,121 397,140 C 463,159 529,177 595,190 C 661,203 761,214 794,219" />
+            <g class="cs-funnel-svg__dots">
+              <circle cx="0" cy="59" r="3.5" /><circle cx="199" cy="76" r="3.5" /><circle cx="397" cy="140" r="3.5" /><circle cx="595" cy="190" r="3.5" /><circle cx="794" cy="219" r="3.5" />
+            </g>
+            <g class="cs-funnel-svg__labels">
+              <g transform="translate(16,160)"><text class="csf-num" y="13">01.</text><text class="csf-eyebrow" y="36">AWARENESS</text><text class="csf-title" y="61">Entry point</text></g>
+              <g transform="translate(215,160)"><text class="csf-num" y="13">02.</text><text class="csf-eyebrow" y="36">CONSIDERATION</text><text class="csf-title" y="61">Mall Landing page</text></g>
+              <g transform="translate(412,27)"><text class="csf-num" y="13">03.</text><text class="csf-eyebrow" y="36">ELIGIBILITY</text><text class="csf-title" y="61">Monitoring page</text></g>
+              <g transform="translate(612,27)"><text class="csf-num" y="13">04.</text><text class="csf-eyebrow" y="36">MAINTAIN MEMBERSHIP</text><text class="csf-title" y="61">Monitoring page</text></g>
+            </g>
+          </svg>
+        </figure>
+      </section>
+
+      <!-- STAGE: AWARENESS -->
+      <section id="awareness" class="cs-section cs-stage reveal">
+        <div class="cs-block">
+          <div class="cs-lead">
+            <p class="cs-eyebrow">AWARENESS / MAIN ISSUES</p>
+            <h3 class="cs-issue__title">Only 5% of whitelisted sellers viewed the Mall page (1,435 out of 25,000)</h3>
+            <p class="cs-body">It lived inside Account Settings under &ldquo;Brand Seller Management&rdquo;, a name that doesn&rsquo;t represent Mall and sat far less visibly than the comparable Star Shop entry point, even though both are membership programs.</p>
+          </div>
+          <figure class="cs-figure"><img src="assets/m-aware-issue.webp" alt="Brand-seller opt-in funnel: from 25,000 whitelisted sellers only 1,435 viewed the page" /></figure>
+        </div>
+
+        <div class="cs-block">
+          <div class="cs-head">
+            <p class="cs-eyebrow">AWARENESS / SOLUTION</p>
+            <h2 class="cs-h2"><span class="serif-accent">Relocate and rename:</span><span class="sans-light"> move the entry point and use a clear labeling.</span></h2>
+          </div>
+          <figure class="cs-before cs-before--after reveal">
+            <span class="cs-pill cs-pill--light">AFTER REVAMP</span>
+            <div class="cs-before__frame">
+              <div class="cs-before__win">
+                <img src="assets/cs-window-bar.png" alt="" aria-hidden="true" />
+                <video loop muted playsinline preload="metadata" aria-label="After revamp — relocated, clearly-labelled Mall entry point"><source src="assets/m-aware-after.webm" type="video/webm" /></video>
+              </div>
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <!-- STAGE: CONSIDERATION -->
+      <section id="consideration" class="cs-section cs-stage reveal">
+        <div class="cs-block">
+          <div class="cs-lead">
+            <p class="cs-eyebrow">CONSIDERATION / MAIN ISSUES</p>
+            <h3 class="cs-issue__title">The landing page didn&rsquo;t sell the value</h3>
+            <p class="cs-body">Research showed that sellers felt Mall&rsquo;s benefits were unattractive compared to Tokopedia, Shopee, and Lazada.</p>
+          </div>
+          <figure class="cs-figure cs-overlay">
+            <img src="assets/m-consider-vis.webp" alt="The Brand Seller Management landing page connected to a survey of why sellers don't join the Mall (Sep 2024)" />
+            <video class="cs-overlay__rec" loop muted playsinline preload="metadata" aria-label="Brand Seller Management landing page that didn't sell the value"><source src="assets/m-consider-rec.webm" type="video/webm" /></video>
+          </figure>
+        </div>
+
+        <div class="cs-block">
+          <div class="cs-head">
+            <p class="cs-eyebrow">CONSIDERATION / SOLUTION</p>
+            <h2 class="cs-h2"><span class="serif-accent">Value-led landing page:</span><span class="sans-light"> restructure with AIDA framework</span></h2>
+          </div>
+          <figure class="cs-before cs-before--after reveal">
+            <span class="cs-pill cs-pill--light">AFTER REVAMP</span>
+            <div class="cs-before__frame">
+              <div class="cs-before__win">
+                <img src="assets/cs-window-bar.png" alt="" aria-hidden="true" />
+                <video loop muted playsinline preload="metadata" aria-label="After revamp — value-led Mall landing page"><source src="assets/m-consider-after.webm" type="video/webm" /></video>
+              </div>
+            </div>
+          </figure>
+          <div class="cs-hmw">
+            <p class="cs-hmw__q"><span class="cs-hmw__num">01.</span><span>HMW improve the perceived value of the Mall program to the sellers &amp; communicate eligibility criteria upfront?</span></p>
+            <ul class="cs-checks">
+              <li>Help users differentiate between sellers and creator sign up more clearly by improving the copywriting &amp; add visual support to explain this.</li>
+              <li>Prepare sellers for the next registration step and motivate them with tailored, localized content.</li>
+            </ul>
+          </div>
+          <figure class="cs-figure"><img src="assets/m-aida.webp" alt="AIDA framework annotated on the landing page: Attention, Interest, Desire, Action" /></figure>
+        </div>
+      </section>
+
+      <!-- STAGE: ELIGIBILITY -->
+      <section id="eligibility" class="cs-section cs-stage reveal">
+        <div class="cs-block cs-issues">
+          <div class="cs-issues__list">
+            <p class="cs-eyebrow">ELIGIBILITY / MAIN ISSUES</p>
+            <div class="cs-issue"><span class="cs-issue__num">01.</span><div><h3 class="cs-issue__title">The biggest leak in the funnel</h3><p class="cs-body">Only 18% of sellers who clicked &ldquo;Get started&rdquo; reached &ldquo;eligible to apply.&rdquo;</p></div></div>
+            <div class="cs-issue"><span class="cs-issue__num">02.</span><div><h3 class="cs-issue__title">Criteria were dense and unactionable</h3><p class="cs-body">Information was shown at too fine a grain (e.g. full product lists rather than &ldquo;how many more products you need&rdquo;), for other criteria sellers are redirected to help-center articles instead of action pages, jargon went unexplained, and ineligible sellers got no notification to reapply once they qualified.</p></div></div>
+          </div>
+          <div class="cs-insight">
+            <p class="cs-eyebrow">SIDE CONTEXT</p>
+            <p class="cs-body">Sellers have to prove that they sell certain numbers of original product by submitting relevant documents; hence there&rsquo;s a list of products in this page.</p>
+          </div>
+        </div>
+        <figure class="cs-figure"><img src="assets/m-elig-issue.webp" alt="Brand-seller opt-in funnel showing the eligibility drop-off" /></figure>
+
+        <div class="cs-block">
+          <div class="cs-head">
+            <p class="cs-eyebrow">ELIGIBILITY / SOLUTION</p>
+            <h2 class="cs-h2"><span class="serif-accent">Simplified eligibility:</span><span class="sans-light"> summarize all criteria with upfront status and one-click join</span></h2>
+          </div>
+          <figure class="cs-before cs-before--after reveal">
+            <span class="cs-pill cs-pill--light">AFTER REVAMP</span>
+            <div class="cs-before__frame">
+              <div class="cs-before__win">
+                <img src="assets/cs-window-bar.png" alt="" aria-hidden="true" />
+                <video loop muted playsinline preload="metadata" aria-label="After revamp — simplified eligibility with upfront status and one-click join"><source src="assets/m-elig-after.webm" type="video/webm" /></video>
+              </div>
+            </div>
+          </figure>
+          <div class="cs-hmw">
+            <p class="cs-hmw__q"><span class="cs-hmw__num">01.</span><span>How might we help sellers understand the eligibility criteria and what to do to achieve them?</span></p>
+            <ul class="cs-checks">
+              <li>Reduce the steps to join the program for eligible sellers and tell ineligible one the summary of the criteria to join.</li>
+              <li>Improved reading flow &amp; simplify the eligibility information on monitoring page.</li>
+              <li>Clarity on actions to improve performance to be eligible.</li>
+            </ul>
+          </div>
+          <figure class="cs-figure"><img src="assets/1-click-join.webp" alt="Eligible to apply vs not eligible to apply states" /></figure>
+          <figure class="cs-figure"><img src="assets/reading-flow.webp" alt="Monitoring page IA: current status, eligibility criteria, value propositions, supporting educational content" /></figure>
+          <figure class="cs-figure"><img src="assets/m-monitor-ba.webp" alt="Monitoring page — clearer path to qualify: before the revamp vs improvement" /></figure>
+        </div>
+      </section>
+
+      <!-- STAGE: MAINTAIN MEMBERSHIP -->
+      <section id="maintain" class="cs-section cs-stage reveal">
+        <div class="cs-block">
+          <div class="cs-lead">
+            <p class="cs-eyebrow">MAINTAIN MEMBERSHIP / MAIN ISSUES</p>
+            <h3 class="cs-issue__title">Sellers are failing to maintain the criteria hence getting automatically offboarded from the program</h3>
+            <p class="cs-body">51% sellers failed to maintain criteria (out of 3,867 sellers onboarded, 1,974 failed to maintain the criteria).</p>
+          </div>
+          <figure class="cs-figure"><img src="assets/m-maintain-issue.webp" alt="Brand-seller opt-in funnel showing maintenance drop-off" /></figure>
+        </div>
+
+        <div class="cs-block">
+          <div class="cs-hmw">
+            <p class="cs-hmw__q"><span class="cs-hmw__num">01.</span><span>HMW warn sellers before they lose membership, and give them time to recover?</span></p>
+            <ul class="cs-checks">
+              <li>Give a grace period to recover before off-boarding.</li>
+              <li>Surface the at-risk status and what to fix on the monitoring page.</li>
+              <li>Give extra communication on other channel: push notification &amp; email.</li>
+            </ul>
+          </div>
+          <figure class="cs-figure"><img src="assets/m-grace.webp" alt="Monitoring page — grace period and in-app communication for at-risk sellers" /></figure>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- IMPACT (full-bleed dark) -->
+  <section id="impact" class="cs-impact reveal">
+    <div class="cs-impact__inner">
+      <p class="cs-eyebrow cs-eyebrow--dark">DESIGN IMPACT</p>
+      <h2 class="cs-impact__headline"><span class="sans-light">More brands found the Mall, joined faster, and the program </span><span class="serif-accent">beat its onboarding target</span></h2>
+
+      <div class="cs-metrics">
+        <div class="cs-metric">
+          <p class="cs-metric__desc">Landing page CTR: the redesign lifted click-through to the program</p>
+          <p class="cs-metric__num">+53.2%</p>
+        </div>
+        <div class="cs-metric">
+          <p class="cs-metric__desc">Brand authorization: share of new onboardings from the in-page product&ndash;brand assignment flow with bulk upload</p>
+          <p class="cs-metric__num">+16.2%</p>
+        </div>
+        <div class="cs-metric">
+          <p class="cs-metric__desc">Seller satisfaction (CSAT): higher rating on a 5-point scale (+0.28)</p>
+          <p class="cs-metric__num">4.83</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -89,15 +89,38 @@
         <div>
           <p class="cs-eyebrow">DESIGN STRATEGY</p>
           <ol class="cs-steps">
-            <li class="cs-step"><span class="cs-step__num">01.</span><div><h3 class="cs-step__title">Design Audit</h3><p class="cs-body">Audit existing design to map out the journey and identify issues theme.</p></div></li>
-            <li class="cs-step"><span class="cs-step__num">02.</span><div><h3 class="cs-step__title">Workshop</h3><p class="cs-body">Workshop with cross-functional team to identify hidden issues from ops &amp; product team.</p></div></li>
-            <li class="cs-step"><span class="cs-step__num">03.</span><div><h3 class="cs-step__title">Develop UI &amp; User Testing</h3><p class="cs-body">Moderated testing with sellers in PH and MY.</p></div></li>
-            <li class="cs-step"><span class="cs-step__num">04.</span><div><h3 class="cs-step__title">Iterate Design</h3><p class="cs-body">Iterated the design based on findings.</p></div></li>
+            <li class="cs-step is-active" data-stage="0">
+              <button class="cs-step__btn" type="button" aria-pressed="true">
+                <span class="cs-step__num">01.</span>
+                <span class="cs-step__text"><span class="cs-step__title">Design Audit</span><span class="cs-step__desc">Audit existing design to map out the journey and identify issues theme.</span></span>
+              </button>
+            </li>
+            <li class="cs-step" data-stage="1">
+              <button class="cs-step__btn" type="button" aria-pressed="false">
+                <span class="cs-step__num">02.</span>
+                <span class="cs-step__text"><span class="cs-step__title">Workshop</span><span class="cs-step__desc">Workshop with cross-functional team to identify hidden issues from ops &amp; product team.</span></span>
+              </button>
+            </li>
+            <li class="cs-step" data-stage="2">
+              <button class="cs-step__btn" type="button" aria-pressed="false">
+                <span class="cs-step__num">03.</span>
+                <span class="cs-step__text"><span class="cs-step__title">Develop UI &amp; User Testing</span><span class="cs-step__desc">Moderated testing with sellers in PH and MY.</span></span>
+              </button>
+            </li>
+            <li class="cs-step" data-stage="3">
+              <button class="cs-step__btn" type="button" aria-pressed="false">
+                <span class="cs-step__num">04.</span>
+                <span class="cs-step__text"><span class="cs-step__title">Iterate Design</span><span class="cs-step__desc">Iterated the design based on findings.</span></span>
+              </button>
+            </li>
           </ol>
         </div>
-        <figure class="cs-figure cs-strategy__img">
-          <img src="assets/cs-strategy.png" alt="Cross-functional workshop board" />
-        </figure>
+        <div class="cs-strategy__media">
+          <figure class="cs-strategy__img is-active" data-stage="0"><img src="assets/strategy-audit.png" alt="Design audit" /></figure>
+          <figure class="cs-strategy__img" data-stage="1"><img src="assets/strategy-workshop.png" alt="Cross-functional workshop board" /></figure>
+          <figure class="cs-strategy__img" data-stage="2"><img src="assets/strategy-testing.png" alt="Moderated user testing" /></figure>
+          <figure class="cs-strategy__img" data-stage="3"><img src="assets/strategy-iterate.png" alt="Iterating the design" /></figure>
+        </div>
       </section>
 
       <!-- FUNNEL (centered head + 3 cols) -->
@@ -178,6 +201,28 @@
       <!-- STAGE 2: REGISTRATION -->
       <section id="registration" class="cs-section cs-stage reveal">
 
+        <!-- main issues -->
+        <div class="cs-block">
+          <div class="cs-issues">
+            <div class="cs-issues__list">
+              <p class="cs-eyebrow">REGISTRATION / MAIN ISSUES</p>
+              <div class="cs-issue"><span class="cs-issue__num">01.</span><div><h3 class="cs-issue__title">The form felt harder than it actually was</h3><p class="cs-body">All fields loaded at once with no sense of progress. Sellers perceived the task as overwhelming before filling a single field.</p></div></div>
+              <div class="cs-issue"><span class="cs-issue__num">02.</span><div><h3 class="cs-issue__title">Some are not prepared enough for the next step hence drop halfway.</h3><p class="cs-body">Instructions for which files to upload weren't connected to the fields they explained. Sellers missed them entirely and guessed instead.</p></div></div>
+            </div>
+            <div class="cs-insight cs-insight--card">
+              <p class="cs-eyebrow">DATA INSIGHTS</p>
+              <p class="cs-insight__stat">66%</p>
+              <p class="cs-body">Sellers drop halfway in this form as they are not prepared of what to submit.</p>
+            </div>
+          </div>
+          <figure class="cs-before cs-before--before reveal">
+            <span class="cs-pill cs-pill--light">BEFORE REVAMP</span>
+            <div class="cs-before__frame">
+              <video loop muted playsinline preload="metadata" aria-label="Before revamp — the registration form loaded every field at once with no sense of progress"><source src="assets/reg-before.webm" type="video/webm" /></video>
+            </div>
+          </figure>
+        </div>
+
         <!-- concept testing (full-bleed tinted band) -->
         <div class="cs-band">
           <h2 class="cs-h2"><span class="sans-light">How might we reduce the perception of complexity in the registration form? </span><span class="serif-accent">2 different concepts were tested</span></h2>
@@ -212,20 +257,6 @@
             </div>
           </div>
           <p class="cs-callout"><span class="serif-accent">Neither concept</span> was the answer on its own. What sellers actually needed was the focused, one-thing-at-a-time feeling of the stepper combined with the transparency of the scroll.</p>
-        </div>
-
-        <!-- main issues -->
-        <div class="cs-block cs-issues">
-          <div class="cs-issues__list">
-            <p class="cs-eyebrow">REGISTRATION / MAIN ISSUES</p>
-            <div class="cs-issue"><span class="cs-issue__num">01.</span><div><h3 class="cs-issue__title">The form felt harder than it actually was</h3><p class="cs-body">All fields loaded at once with no sense of progress. Sellers perceived the task as overwhelming before filling a single field.</p></div></div>
-            <div class="cs-issue"><span class="cs-issue__num">02.</span><div><h3 class="cs-issue__title">Some are not prepared enough for the next step hence drop halfway.</h3><p class="cs-body">Instructions for which files to upload weren't connected to the fields they explained. Sellers missed them entirely and guessed instead.</p></div></div>
-          </div>
-          <div class="cs-insight cs-insight--card">
-            <p class="cs-eyebrow">DATA INSIGHTS</p>
-            <p class="cs-insight__stat">66%</p>
-            <p class="cs-body">Sellers drop halfway in this form as they are not prepared of what to submit.</p>
-          </div>
         </div>
 
         <!-- solution 1: combined concept -->

@@ -89,8 +89,20 @@ a { color: inherit; text-decoration: none; }
   white-space: nowrap;
 }
 .btn__divider { width: 1px; height: 18px; background: rgba(255, 255, 255, 0.35); }
-.btn__arrow { width: 11px; height: 11px; display: block; }
-.btn__arrow--down { transform: rotate(90deg); }
+.btn__arrow { width: 11px; height: 11px; display: block; transition: transform 0.2s ease; }
+/* up-right arrows (case CTAs): nudge 2px up + 2px right on hover */
+.btn:hover .btn__arrow:not(.btn__arrow--down) { transform: translate(2px, -2px); }
+/* hero "VIEW MY WORK": point the arrow straight down and loop a vertical "jump"
+   to invite scrolling (per unused-css animated down arrow: jump, 1.5s, infinite) */
+.btn__arrow--down { transform: rotate(135deg); animation: arrowJump 1.5s infinite; }
+@keyframes arrowJump {
+  0%   { transform: translateY(0)   rotate(135deg); }
+  50%  { transform: translateY(4px) rotate(135deg); }
+  100% { transform: translateY(0)   rotate(135deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn__arrow--down { animation: none; }   /* stays a static down arrow */
+}
 
 /* ---------- HERO ---------- */
 .hero {
@@ -190,19 +202,22 @@ a { color: inherit; text-decoration: none; }
   padding-top: 40px;
   padding-bottom: 120px;
 }
-.case { display: flex; gap: 40px; align-items: center; }
-.case__visual { flex: 0 0 588px; max-width: 588px; }
+/* two equal halves so the visuals meet at the centre line: Case 1's visual
+   (left) ends where Case 2's visual (right) begins — they stay vertically
+   aligned at any width. The 40px visual↔text gap lives on the info's inner side. */
+.case { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
+.case__visual { min-width: 0; }
 .case__info {
-  flex: 1 1 0;
   min-width: 0;
   align-self: stretch;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 40px 0;
+  padding: 40px 0 40px 40px;   /* normal row: info on the right → gap on its left */
 }
-.case__title { font-size: 32px; line-height: 1.2; font-weight: 300; color: var(--black); }
+.case--reverse .case__info { padding: 40px 40px 40px 0; }   /* reversed: info on the left → gap on its right */
+.case__title { font-size: 32px; line-height: 1.2; font-weight: 300; color: var(--black); letter-spacing:0.4px}
 .case__title .sans-light { letter-spacing: -0.16px; }
 .case__cta { margin-top: 32px; }
 
@@ -221,53 +236,12 @@ a { color: inherit; text-decoration: none; }
   color: #000;
 }
 .stat__sign { display: inline-block; width: 12px; }
-.stat__label { font-family: var(--sans); font-weight: 300; font-size: 14px; line-height: 1.2; letter-spacing: 0.14px; color: var(--body); }
+.stat__label { font-family: var(--sans); font-weight: 300; font-size: 14px; line-height: 1.2; letter-spacing: 0.5px; color: var(--body); }
 
 /* frame / visual — internal coordinate space is 588 x 545, scaled to fit by script.js */
-.frame {
-  position: relative;
-  width: 588px;
-  height: 545px;
-  overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  transform-origin: top left;
-}
-.frame--150 { background-image: url("assets/bg-150.png"); }
-.frame--152 { background-image: url("assets/bg-152.png"); }
-.frame--160 { background-image: url("assets/bg-160.png"); }
-
-.guide { position: absolute; background: rgba(255, 255, 255, 0.55); pointer-events: none; }
-.guide--v { top: 0; bottom: 0; width: 1px; }
-.guide--h { left: 0; right: 0; height: 1px; }
-
-.glass {
-  position: absolute;
-  padding: 20px;
-  border-radius: 4px;
-  background: rgba(217, 217, 217, 0.2);
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
-  overflow: hidden;
-}
-.glass img { width: 100%; height: 100%; object-fit: cover; border-radius: 2px; display: block; }
-
-/* px measurement brackets */
-.measure { position: absolute; pointer-events: none; }
-.measure--v { width: 14px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
-.measure--v::before,
-.measure--v::after { content: ""; flex: 1; width: 1px; background: rgba(255, 255, 255, 0.6); }
-.measure--h { height: 14px; display: flex; flex-direction: row; align-items: center; gap: 8px; }
-.measure--h::before,
-.measure--h::after { content: ""; flex: 1; height: 1px; background: rgba(255, 255, 255, 0.6); }
-.measure__label {
-  font-family: var(--mono);
-  font-weight: 300;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.75);
-  white-space: nowrap;
-}
-.measure--v .measure__label { writing-mode: vertical-rl; transform: rotate(180deg); }
+/* case-study visual: the whole composition (blurred background + card +
+   "px" measurement brackets) is exported straight from Figma as one image */
+.case__shot { display: block; width: 100%; height: auto; }
 
 /* ---------- EXPERIENCE ---------- */
 .experience { display: flex; justify-content: space-between; align-items: flex-start; padding-top: 120px; padding-bottom: 120px; gap: 60px; }
@@ -282,7 +256,7 @@ a { color: inherit; text-decoration: none; }
 .entry__role { display: flex; flex-direction: column; gap: 6px; }
 .entry__company { font-family: var(--sans); font-weight: 300; font-size: 16px; color: var(--black); }
 .entry__sub { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 14px; color: var(--body); opacity: 0.7; }
-.entry__desc { font-family: var(--sans); font-weight: 400; font-size: 12px; line-height: 1.5; color: var(--body); }
+.entry__desc { font-family: var(--sans); font-weight: 300; font-size: 12px; line-height: 1.5; color: var(--body); letter-spacing: 0.5px; }
 
 /* ---------- FOOTER ---------- */
 .footer { position: relative; background: #000; overflow: hidden; }
@@ -379,9 +353,9 @@ a { color: inherit; text-decoration: none; }
   .hero__media { justify-self: start; order: 2; }
 
   .cases { gap: 96px; }
-  .case, .case--reverse { flex-direction: column; align-items: stretch; gap: 24px; }
+  .case, .case--reverse { grid-template-columns: 1fr; align-items: stretch; gap: 24px; }
   .case__visual { flex: none; max-width: 100%; width: 100%; margin: 0 auto; }
-  .case__info { padding: 0; }
+  .case__info, .case--reverse .case__info { padding: 0; }
   .case__title { order: 1; }
   .stats { order: 2; margin-top: 28px; }
   .case__cta {

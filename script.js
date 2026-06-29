@@ -2,23 +2,6 @@
 (function () {
   "use strict";
 
-  var FRAME_W = 588; // internal coordinate width of the case-study frames
-
-  // Scale each case-study frame to fit its (responsive) column, keeping the
-  // measurement guides/overlays pixel-aligned to the original 588x545 artwork.
-  function scaleFrames() {
-    var visuals = document.querySelectorAll(".case__visual");
-    visuals.forEach(function (visual) {
-      var frame = visual.querySelector(".frame");
-      if (!frame) return;
-      var available = visual.clientWidth;
-      var scale = Math.min(1, available / FRAME_W);
-      frame.style.transform = "scale(" + scale + ")";
-      // collapse the wrapper height to the scaled frame so layout flows correctly
-      visual.style.height = frame.offsetHeight * scale + "px";
-    });
-  }
-
   // Live pixel readout in the footer: each bracket reports the actual rendered
   // width of the span it measures ("843 px" in the design), updating on resize.
   function updatePxCounters() {
@@ -29,7 +12,6 @@
   }
 
   function onResize() {
-    scaleFrames();
     updatePxCounters();
   }
 
@@ -131,12 +113,77 @@
     videos.forEach(function (v) { io.observe(v); });
   }
 
+  // Design-strategy stepper: auto-advances through the stages on a fixed cadence
+  // (the connector fills like a progress bar over --cs-step-dur), looping. Each
+  // stage un-dims its text and cross-fades the right-side image. Clicking a step
+  // jumps to it and restarts the timer. Reduced-motion: no auto-advance.
+  function wireStrategyStepper() {
+    var stepsEl = document.querySelector(".cs-steps");
+    var steps = Array.prototype.slice.call(document.querySelectorAll(".cs-step"));
+    var shots = Array.prototype.slice.call(document.querySelectorAll(".cs-strategy__img"));
+    if (!stepsEl || !steps.length || !shots.length) return;
+    var reduce = prefersReducedMotion();
+    var durMs = (parseFloat(getComputedStyle(stepsEl).getPropertyValue("--cs-step-dur")) || 5) * 1000;
+    var current = 0, timer = null;
+    function render() {
+      steps.forEach(function (s, i) {
+        s.classList.toggle("is-active", i === current);
+        var btn = s.querySelector(".cs-step__btn");
+        if (btn) btn.setAttribute("aria-pressed", i === current ? "true" : "false");
+      });
+      shots.forEach(function (s, i) { s.classList.toggle("is-active", i === current); });
+    }
+    function schedule() {
+      if (reduce) return;                      // honour reduced-motion: stay put
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        current = (current + 1) % steps.length;
+        render();
+        schedule();
+      }, durMs);
+    }
+    function goTo(i) { current = i; render(); schedule(); }
+    steps.forEach(function (step, i) {
+      var btn = step.querySelector(".cs-step__btn") || step;
+      btn.addEventListener("click", function () { goTo(i); });
+    });
+    render();
+    schedule();
+  }
+
+  // Funnel curve: set the path's dash length to its own length, then add
+  // .is-drawn when it scrolls into view so the line draws left→right.
+  function wireFunnelDraw() {
+    var svg = document.querySelector(".cs-funnel-svg");
+    if (!svg) return;
+    var path = svg.querySelector(".cs-funnel-svg__curve");
+    if (path && path.getTotalLength) {
+      var len = Math.ceil(path.getTotalLength());
+      svg.style.setProperty("--len", len);
+    }
+    if (prefersReducedMotion() || !("IntersectionObserver" in window)) {
+      svg.classList.add("is-drawn");
+      return;
+    }
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { svg.classList.add("is-drawn"); io.unobserve(svg); }
+        });
+      },
+      { threshold: 0.35 }
+    );
+    io.observe(svg);
+  }
+
   function init() {
     onResize();
     wireNavAnchors();
     wireScrollReveal();
     wireScrollSpy();
     wireVideoPlayback();
+    wireStrategyStepper();
+    wireFunnelDraw();
   }
 
   if (document.readyState === "loading") {
@@ -146,5 +193,5 @@
   }
 
   window.addEventListener("resize", onResize);
-  window.addEventListener("load", scaleFrames); // re-measure after fonts/images settle
+  window.addEventListener("load", updatePxCounters); // re-measure after fonts settle
 })();

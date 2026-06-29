@@ -40,8 +40,6 @@
   /* check icons & status accents */
   --cs-check:     #1a1a1a;              /* HMW checklist tick       */
   --cs-check-alt: #c9462a;              /* annotated red tick       */
-  --cs-pros:      #3aa76d;              /* PROS label               */
-  --cs-cons:      #d2674a;              /* CONS label               */
 
   /* placeholder figure gradient */
   --cs-ph-warm: rgba(255, 138, 76, 0.12);
@@ -86,11 +84,9 @@
   --cs-fs-11: 11px;   /* captions / placeholder     */
   --cs-fs-12: 12px;   /* eyebrow / nav / tags       */
   --cs-fs-14: 14px;   /* body                       */
-  --cs-fs-15: 15px;   /* checklist items            */
   --cs-fs-16: 16px;   /* labels / numbers           */
   --cs-fs-17: 17px;   /* issue / HMW titles         */
   --cs-fs-18: 18px;   /* large numbers              */
-  --cs-fs-19: 19px;   /* concept title              */
   --cs-fs-20: 20px;   /* callout (serif)            */
   --cs-fs-22: 22px;   /* signal lead                */
   --cs-fs-23: 23px;   /* h2 (mobile)                */
@@ -116,11 +112,11 @@
   --cs-ls-label:     1.4px;   /* mono caps (back/cap/pill) */
   --cs-ls-wide:      1px;     /* tags / toc group / ph     */
   --cs-ls-toc:       0.4px;   /* toc links                 */
-  --cs-ls-h2:       0.3px;   /* h2                        */
+  --cs-ls-h2:        0.3px;   /* h2                        */
   --cs-ls-headline: -0.4px;   /* impact headline           */
   --cs-ls-title:    -0.6px;   /* page title                */
   --cs-ls-body:     0.4px;    /* body copy                 */
-  --cs-ls-hmw: 0.6px;
+  --cs-ls-hmw:      0.6px;
 
   /* layout */
   --cs-content-w: 794px;   /* main content column — impact section matches this */
@@ -165,7 +161,7 @@
    The nav is placed into the leftover left gutter, right-aligned
    toward the content — it is not part of the centered block. */
 .cs-wrap {
-  padding: var(--cs-pad-top) 0 var(--pad);   /* top=token · sides 0 · bottom stays --pad */
+  padding: var(--cs-pad-top) 0 0;   /* top=token · sides 0 · bottom stays --pad */
   display: grid;
   grid-template-columns: 1fr minmax(0, var(--cs-content-w)) 1fr;
   align-items: start;
@@ -196,7 +192,7 @@
 
 .cs-toc { display: flex; flex-direction: column; gap: 20px; }
 .cs-toc__link {
-  font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-12); letter-spacing: var(--cs-ls-toc);
+  font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-10); letter-spacing: var(--cs-ls-toc);
   color: var(--cs-text-subtle); transition: color 0.2s ease;
 }
 .cs-toc__link:hover, .cs-toc__link.is-active { color: var(--cs-text); }
@@ -215,6 +211,43 @@
 /* ---------- figures / images ---------- */
 .cs-figure { margin: 0; }
 .cs-figure img { display: block; width: 100%; height: auto; }
+/* case-mall page: lead text group, funnel curve spacing */
+.cs-lead { display: flex; flex-direction: column; gap: 12px; }
+.cs-funnel-curve { margin-top: 40px; }
+/* annotated visual with an animated recording overlaid on its window region
+   (consideration main issues) — coords from the Figma frame */
+.cs-overlay { position: relative; }
+.cs-overlay__rec {
+  position: absolute; left: 0; top: 1.08%; width: 65.73%; height: 77.42%;
+  object-fit: cover; object-position: center top; border-radius: 6px;
+}
+
+/* funnel curve — inline SVG (vector) so it can draw on scroll */
+.cs-funnel-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.cs-funnel-svg__grid line { stroke: #e4e4e4; stroke-width: 1; stroke-dasharray: 2 6; }
+.cs-funnel-svg__curve { stroke: #e8823c; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.cs-funnel-svg__dots circle { fill: #e8823c; }
+.csf-num     { font-family: var(--cs-font-mono); font-size: 14px; fill: #bdbdbd; }
+.csf-eyebrow { font-family: var(--cs-font-mono); font-size: 12px; letter-spacing: 1.6px; fill: #bdbdbd; }
+.csf-title   { font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: 14px; fill: var(--cs-text); }
+/* draw-on-scroll: the line grows left→right, dots pop in sequence, grid/labels fade in */
+.cs-funnel-svg__curve { stroke-dasharray: var(--len, 850); stroke-dashoffset: var(--len, 850); }
+.cs-funnel-svg__dots circle,
+.cs-funnel-svg__grid, .cs-funnel-svg__labels { opacity: 0; }
+.cs-funnel-svg.is-drawn .cs-funnel-svg__curve { stroke-dashoffset: 0; transition: stroke-dashoffset 1.8s cubic-bezier(0.22, 1, 0.36, 1); }
+.cs-funnel-svg.is-drawn .cs-funnel-svg__grid,
+.cs-funnel-svg.is-drawn .cs-funnel-svg__labels { opacity: 1; transition: opacity 0.7s ease; }
+.cs-funnel-svg.is-drawn .cs-funnel-svg__dots circle { opacity: 1; transition: opacity 0.4s ease; }
+.cs-funnel-svg.is-drawn .cs-funnel-svg__dots circle:nth-child(1) { transition-delay: 0.05s; }
+.cs-funnel-svg.is-drawn .cs-funnel-svg__dots circle:nth-child(2) { transition-delay: 0.5s; }
+.cs-funnel-svg.is-drawn .cs-funnel-svg__dots circle:nth-child(3) { transition-delay: 0.95s; }
+.cs-funnel-svg.is-drawn .cs-funnel-svg__dots circle:nth-child(4) { transition-delay: 1.35s; }
+.cs-funnel-svg.is-drawn .cs-funnel-svg__dots circle:nth-child(5) { transition-delay: 1.7s; }
+@media (prefers-reduced-motion: reduce) {
+  .cs-funnel-svg__curve { stroke-dashoffset: 0; }
+  .cs-funnel-svg__grid, .cs-funnel-svg__labels, .cs-funnel-svg__dots circle { opacity: 1; }
+  .cs-funnel-svg * { transition: none !important; }
+}
 .cs-figure__cap {
   font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-11); letter-spacing: var(--cs-ls-label);
   text-transform: uppercase; color: var(--cs-text-subtle); margin-bottom: 10px;
@@ -333,14 +366,43 @@
 
 /* ---------- DESIGN STRATEGY (list left + image right) ---------- */
 .cs-strategy { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
-.cs-strategy__img { align-self: stretch; }
-.cs-strategy__img img { height: 100%; object-fit: cover; }
-.cs-steps { list-style: none; position: relative; display: flex; flex-direction: column; gap: 30px; margin-top: 28px; }
-.cs-steps::before { content: ""; position: absolute; left: 9px; top: 10px; bottom: 10px; width: 1px; background: var(--cs-line); }
-.cs-step { display: grid; grid-template-columns: 36px 1fr; gap: 14px; align-items: start; }
-.cs-step__num { position: relative; z-index: 1; font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-14); color: var(--cs-text-subtle); background: var(--cs-surface); }
-.cs-step__title { font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-1); color: var(--cs-text); margin-bottom: 6px; letter-spacing: var(--cs-ls-hmw)}
-.cs-step__desc { font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-14); line-height: var(--cs-lh-loose); color: var(--cs-text-muted); }
+/* right-side media: images stacked, cross-fading to the active stage */
+.cs-strategy__media { position: relative; align-self: stretch; min-height: 300px; border-radius: 8px; overflow: hidden; background: var(--cs-insight-card-bg); }
+.cs-strategy__img { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 0.45s ease; }
+.cs-strategy__img.is-active { opacity: 1; }
+.cs-strategy__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* steps — auto-advancing progress; click to jump */
+.cs-steps { list-style: none; display: flex; flex-direction: column; gap: 30px; margin-top: 28px; --cs-step-dur: 5s; }
+.cs-step { position: relative; }
+/* connector = dashed "track" + a solid line that fills it like a progress bar.
+   Completed segments stay solid; the active segment fills over --cs-step-dur. */
+.cs-step:not(:last-child)::before,
+.cs-step:not(:last-child)::after {
+  content: ""; position: absolute; left: 9px; top: 24px; bottom: -30px; width: 0;
+}
+.cs-step:not(:last-child)::before { border-left: 1px dashed #cfcfcf; }                 /* track */
+.cs-step:not(:last-child)::after  { border-left: 1px solid #8c8c8c; transform: scaleY(0); transform-origin: top; }  /* fill */
+/* only the ACTIVE segment fills solid; passed segments revert to the dashed track */
+.cs-step.is-active::after { animation: cs-fill var(--cs-step-dur, 5s) linear forwards; }
+@keyframes cs-fill { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .cs-step.is-active::after { animation: none; transform: scaleY(1); }
+}
+
+.cs-step__btn {
+  display: grid; grid-template-columns: 36px 1fr; gap: 14px; align-items: start;
+  width: 100%; text-align: left; padding: 0; border: 0; background: none; font: inherit; color: inherit; cursor: pointer;
+}
+.cs-step__num {
+  position: relative; z-index: 1; font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light);
+  font-size: var(--cs-fs-14); color: #c5c5c6; background: var(--cs-surface); transition: color 0.3s ease;
+}
+.cs-step.is-active .cs-step__num { color: var(--cs-text-muted); }
+.cs-step__text { display: block; opacity: 0.5; transition: opacity 0.3s ease; }
+.cs-step.is-active .cs-step__text { opacity: 1; }
+.cs-step__title { display: block; font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-14); color: var(--cs-text); margin-bottom: 6px; letter-spacing: var(--cs-ls-hmw); }
+.cs-step__desc { display: block; font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-14); line-height: var(--cs-lh-loose); color: var(--cs-text-muted); }
 
 /* ---------- FUNNEL (centered head + 3 cols) ---------- */
 .cs-funnel-head { text-align: center; font-size: var(--cs-fs-30); }
@@ -354,7 +416,7 @@
 .cs-funnel__col .cs-eyebrow { margin-top: 4px; }
 
 /* ---------- STAGES ---------- */
-.cs-stage { display: flex; flex-direction: column; gap: 80px; }   /* sub-section ↔ sub-section */
+.cs-stage { display: flex; flex-direction: column; gap: 120px; }   /* sub-section ↔ sub-section */
 .cs-block { display: flex; flex-direction: column; gap: 40px; }   /* content ↔ content */
 /* full-bleed tinted band (concept testing) — bg spans the viewport, content
    stays inset to the centered column, like the dark Impact section */
@@ -424,6 +486,23 @@
   display: block; width: 100%; height: 100%;
   object-fit: cover; object-position: top center; border-radius: 0;
 }
+/* AFTER REVAMP (orange) mockups — standardized: the recording sits flush at the
+   bottom edge of the band, with square bottom corners (no bottom padding/radius) */
+.cs-before--after .cs-before__frame {
+  bottom: 0;                         /* anchor to the band's bottom edge */
+  padding: 6px 6px 0;                /* frosted border on top/sides only */
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+}
+.cs-before--after .cs-before__win {
+  aspect-ratio: auto; height: 100%;  /* fill the frame down to the bottom edge */
+  border-radius: 6px 6px 0 0;
+}
+.cs-before--after .cs-before__frame > img,
+.cs-before--after .cs-before__frame > video {
+  height: 100%; object-fit: cover; object-position: top center;
+  border-radius: 6px 6px 0 0;        /* direct media (no chrome bar) */
+}
 
 /* solution / HMW (question left, checks right) */
 .cs-hmw { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
@@ -469,7 +548,7 @@
 .cs-concept__title { font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-14); line-height: var(--cs-lh-title); color: var(--cs-text); }
 .cs-concept__desc { font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-12); line-height: var(--cs-lh-body); color: var(--cs-text-muted); }
 /* mockup cropped to the Figma box ratio so it doesn't blow up the column */
-.cs-concept__img { margin: 0; border-radius: 8px; overflow: hidden; aspect-ratio: 385 / 241; }
+.cs-concept__img { margin: 0; overflow: hidden; aspect-ratio: 385 / 241; }
 .cs-concept__img video, .cs-concept__img img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
 /* PROS / CONS — auto-width label + flexible text (matches Figma), neutral grey labels */
 .cs-concept__prc { display: flex; flex-direction: column; gap: 24px; }
@@ -495,7 +574,7 @@
 }
 .cs-impact__headline .serif-accent { color: var(--cs-on-dark-accent); }
 .cs-metrics { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 64px; }
-.cs-metric { padding: 8px 28px; display: flex; flex-direction: column; gap: 72px; }
+.cs-metric { padding: 8px 28px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; }
 .cs-metric:first-child { padding-left: 0; }
 .cs-metric + .cs-metric { border-left: 1px solid var(--cs-on-dark-line); }
 .cs-metric__desc { 
@@ -538,7 +617,7 @@
   .cs-section { margin-top: 64px; }
   .cs-stage { gap: 64px; }
   .cs-strategy { grid-template-columns: 1fr; gap: 36px; }
-  .cs-strategy__img { order: -1; }
+  .cs-strategy__media { order: -1; min-height: 240px; }
   .cs-funnel { grid-template-columns: 1fr; gap: 36px; }
   .cs-issues { grid-template-columns: 1fr; gap: 28px; }
   .cs-insight { margin-top: 0; }
