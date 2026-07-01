@@ -176,6 +176,96 @@
     io.observe(svg);
   }
 
+  // About page — testimonial selector. Hover→colour is CSS; click swaps the
+  // quote body + attribution (name/role/avatar) from the hidden .ab-data store.
+  // About page — testimonial slider: one at a time, chevrons step through (loops).
+  function wireAboutTestimonials() {
+    var root = document.querySelector("[data-testi]");
+    var items = document.querySelectorAll(".ab-data > div");
+    if (!root || !items.length) return;
+    var quote = root.querySelector("[data-quote]");
+    var av = root.querySelector("[data-av]");
+    var nameEl = root.querySelector("[data-name]");
+    var roleEl = root.querySelector("[data-role]");
+    var prev = root.querySelector("[data-prev]");
+    var next = root.querySelector("[data-next]");
+    var n = items.length, i = 0;
+    function show(k) {
+      i = (k % n + n) % n;
+      var it = items[i];
+      if (quote) quote.innerHTML = it.innerHTML;
+      if (nameEl) nameEl.textContent = it.getAttribute("data-name") || "";
+      if (roleEl) roleEl.textContent = it.getAttribute("data-role") || "";
+      if (av) { var src = it.getAttribute("data-av"); if (src) av.src = src; }
+    }
+    if (prev) prev.addEventListener("click", function () { show(i - 1); });
+    if (next) next.addEventListener("click", function () { show(i + 1); });
+    show(0);
+  }
+
+  // About page — photo carousel (prev/next + dots + drag/swipe; no loop).
+  function wireAboutCarousel() {
+    var track = document.querySelector("[data-track]");
+    if (!track) return;
+    var slides = Array.prototype.slice.call(track.children);
+    var viewport = track.parentElement;
+    // scope controls to the gallery — the testimonial slider also uses [data-prev]/[data-next]
+    var gallery = track.closest(".ab-gallery") || document;
+    var dotsWrap = gallery.querySelector("[data-dots]");
+    var prev = gallery.querySelector("[data-prev]");
+    var next = gallery.querySelector("[data-next]");
+    var n = slides.length, idx = 0, dots = [];
+    if (dotsWrap) {
+      slides.forEach(function (_, i) {
+        var b = document.createElement("button");
+        b.className = "ab-dot"; b.type = "button";
+        b.setAttribute("aria-label", "Go to slide " + (i + 1));
+        b.addEventListener("click", function () { go(i); });
+        dotsWrap.appendChild(b); dots.push(b);
+      });
+    }
+    function render() {
+      track.style.transform = "translateX(" + (-idx * 100) + "%)";
+      if (prev) prev.disabled = idx === 0;
+      if (next) next.disabled = idx === n - 1;
+      dots.forEach(function (d, i) { d.classList.toggle("is-active", i === idx); });
+    }
+    function go(i) { idx = Math.max(0, Math.min(n - 1, i)); render(); }
+    if (prev) prev.addEventListener("click", function () { go(idx - 1); });
+    if (next) next.addEventListener("click", function () { go(idx + 1); });
+
+    // drag / swipe
+    var startX = 0, dragging = false, moved = 0;
+    function down(e) {
+      dragging = true; moved = 0;
+      startX = e.touches ? e.touches[0].clientX : e.clientX;
+      track.style.transition = "none";
+    }
+    function move(e) {
+      if (!dragging) return;
+      var x = e.touches ? e.touches[0].clientX : e.clientX;
+      moved = x - startX;
+      track.style.transform = "translateX(" + (-idx * 100 + moved / viewport.offsetWidth * 100) + "%)";
+    }
+    function up() {
+      if (!dragging) return;
+      dragging = false;
+      track.style.transition = "";
+      var threshold = viewport.offsetWidth * 0.18;
+      if (moved < -threshold) go(idx + 1);
+      else if (moved > threshold) go(idx - 1);
+      else render();
+    }
+    viewport.addEventListener("mousedown", down);
+    window.addEventListener("mousemove", move);
+    window.addEventListener("mouseup", up);
+    viewport.addEventListener("touchstart", down, { passive: true });
+    viewport.addEventListener("touchmove", move, { passive: true });
+    viewport.addEventListener("touchend", up);
+    viewport.addEventListener("dragstart", function (e) { e.preventDefault(); });
+    render();
+  }
+
   function init() {
     onResize();
     wireNavAnchors();
@@ -184,6 +274,8 @@
     wireVideoPlayback();
     wireStrategyStepper();
     wireFunnelDraw();
+    wireAboutTestimonials();
+    wireAboutCarousel();
   }
 
   if (document.readyState === "loading") {

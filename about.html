@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>About — Desak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400&family=IBM+Plex+Serif:ital,wght@1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="about.css" />
+</head>
+<body>
+  <div class="page">
+
+    <main class="about">
+
+      <!-- BACK -->
+      <a class="about__back" href="index.html#work">
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3 L5 8 L10 13 M5 8 H13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>BACK TO HOME</span>
+      </a>
+
+      <!-- 1 · THE STORY OF MY LIFE -->
+      <section class="ab-section">
+        <div class="ab-head"><h2 class="ab-head__title">How did she end up here?</h2><span class="ab-head__rule"></span></div>
+        <div class="ab-story">
+          <img class="ab-story__photo" src="assets/profile.png" alt="Portrait of Desak" />
+          <div class="ab-story__text">
+            <p>Started her career as a designer after realizing in university that the shortest path algorithm was not, in fact, her shortest path (iykyk).</p>
+            <p>Along the way, she discovered that while she may not know how to optimize the algorithm, she does know exactly where to put the button.</p>
+            <p>Long story short AI happened, now she likes the idea that she can fix the padding according to her preference without having a beef with a developer.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2 · WHAT THEY SAID ABOUT ME (interactive) -->
+      <section class="ab-section" id="testimonials">
+        <div class="ab-head"><h2 class="ab-head__title">What they said about me</h2><span class="ab-head__rule"></span></div>
+
+        <!-- one testimonial at a time; chevrons step through them -->
+        <div class="ab-testi" data-testi>
+          <div class="ab-quote">
+            <span class="ab-quote__mark" aria-hidden="true">&ldquo;</span>
+            <div class="ab-story__text" data-quote></div>
+          </div>
+          <div class="ab-testi__foot">
+            <div class="ab-testi__person">
+              <img class="ab-testi__av" data-av src="assets/areta.jpeg" alt="" />
+              <span class="ab-testi__meta">
+                <span class="ab-testi__name" data-name>Areta Selena</span>
+                <span class="ab-testi__role" data-role>Product Designer @ Omni HR</span>
+              </span>
+            </div>
+            <div class="ab-testi__nav">
+              <button class="ab-testi__btn" type="button" data-prev aria-label="Previous testimonial">
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3 L5 8 L10 13" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button class="ab-testi__btn" type="button" data-next aria-label="Next testimonial">
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3 L11 8 L6 13" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- testimonial data: name / role / avatar on each entry, slid in on chevron click -->
+        <div class="ab-data" hidden>
+          <div data-name="Deardra Nurriel" data-role="Product Designer @ Mining company" data-av="assets/deardra.png">
+            <p>Having worked and sat closely with Desak, I've always had the opportunity to listen to her thorough judgements and witness her thoughtful design process. She's the kind of designer who is never satisfied with the first or second design options. She'd continue to refine and polish until it feels right functionally and aesthetically; a true explorer and crafter. </p>
+            <p>Asking "why" is a part of who she is, whether questioning why life unfolds the way it does... or why users behave in certain ways. She's brilliant in thinking critically and hitting the design sweet spot. I think that's why her designs are not only well-reasoned and strong, but also clean and enjoyable to look at. I wish I could still work and sit together with Desak!</p>
+          </div>
+          <div data-name="Jessica Tamara" data-role="Product Designer @ Digify" data-av="assets/jessica.jpeg">
+            <p>I had the privilege of working with Desak at Tokopedia, and I was continually impressed by her exceptional visual taste and attention to detail. Desak is a quick learner who effortlessly adapts to new situations, always bringing fresh and creative solutions to the table.</p>
+            <p>I highly recommend Desak as an outstanding product designer. She has a remarkable talent for solving complex problems and transforming them into delightful, user friendly experiences.</p>
+          </div>
+          <div data-name="Santo Unsri" data-role="Product Designer @ TikTok Shop" data-av="assets/santo.png">
+            <p>Desak has consistently demonstrated strong performance as a designer. She shows solid critical thinking, a strong sense of design quality, and effective communication skills, combined with a positive and professional attitude.</p>
+            <p>Her ability to collaborate well with the team and contribute thoughtfully has made working with her a very positive experience. I'm very grateful to have her in the team and I wish I have the opportunity to work again with her in the future.</p>
+          </div>
+          <div data-name="Areta Selena" data-role="Product Designer @ Omni HR" data-av="assets/areta.jpeg">
+            <p>During our time on the Campaign &amp; Promotion team, I had the pleasure of working alongside Desak, whose critical thinking and meticulous approach made a significant impression. Desak is adept at understanding requirements, defining problems, and ensuring thorough execution.</p>
+            <p>She isn&rsquo;t afraid to challenge assumptions and maintains a tidy and well-thought-out work ethic. Beyond her professional strengths, Desak&rsquo;s easy-going nature makes her a great colleague and friend!</p>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- 4 · I TRAVEL & TAKE PICTURES (interactive carousel) -->
+      <section class="ab-section">
+        <div class="ab-head"><h2 class="ab-head__title">Life outside Figma</h2><span class="ab-head__rule"></span></div>
+        <div class="ab-gallery">
+          <div class="ab-gallery__viewport">
+            <div class="ab-gallery__track" data-track>
+              <div class="ab-slide"><div class="ab-slide__left"><img src="assets/about/1A.webp" alt="" /><img src="assets/about/1B.webp" alt="" /></div><img class="ab-slide__right" src="assets/about/1C.webp" alt="" /></div>
+              <div class="ab-slide"><div class="ab-slide__left"><img src="assets/About/2A.webp" alt="" /><img src="assets/About/2B.webp" alt="" /></div><img class="ab-slide__right" src="assets/About/2C.webp" alt="" /></div>
+              <div class="ab-slide"><div class="ab-slide__left"><img src="assets/About/3A.webp" alt="" /><img src="assets/About/3B.webp" alt="" /></div><img class="ab-slide__right" src="assets/About/3C.webp" alt="" /></div>
+              <div class="ab-slide"><div class="ab-slide__left"><img src="assets/About/4A.webp" alt="" /><img src="assets/About/4B.webp" alt="" /></div><img class="ab-slide__right" src="assets/About/4C.webp" alt="" /></div>
+            </div>
+          </div>
+          <div class="ab-gallery__nav">
+            <button class="ab-gallery__btn" type="button" data-prev aria-label="Previous">
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3 L5 8 L10 13" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="ab-dots" data-dots></div>
+            <button class="ab-gallery__btn" type="button" data-next aria-label="Next">
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3 L11 8 L6 13" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="footer">
+      <div class="container">
+        <div class="footer__inner">
+          <div class="footer__left">
+            <div class="footer__measure">
+              <span class="m-arrow m-arrow--l"></span><span class="m-line"></span><span class="m-label"><span class="px-counter">843</span> px</span><span class="m-line"></span><span class="m-arrow m-arrow--r"></span>
+            </div>
+            <p class="footer__headline"><span>Glad </span><span class="serif-accent footer__accent">you made it </span><span>all the way down here.</span></p>
+            <div class="footer__measure">
+              <span class="m-arrow m-arrow--l"></span><span class="m-line"></span><span class="m-label"><span class="px-counter">843</span> px</span><span class="m-line"></span><span class="m-arrow m-arrow--r"></span>
+            </div>
+          </div>
+          <div class="footer__right">
+            <span class="footer__rule"></span>
+            <a class="footer__link" href="https://www.linkedin.com/in/desakmadem/" target="_blank" rel="noopener noreferrer">
+              <span>REACH ME THROUGH LINKEDIN</span>
+              <svg class="link-arrow" viewBox="-1.7 -1.7 11.067 11.067" fill="none" aria-hidden="true"><path d="M0.5 7.16667L7.16667 0.5M7.16667 7.16667V0.5H0.5" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <span class="footer__rule"></span>
+            <a class="footer__link" href="https://drive.google.com/file/d/1bFdJHdn02jlXE0a7FuHkOoRqvCfpGRP8/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+              <span>VIEW MY RESUME</span>
+              <svg class="link-arrow" viewBox="-1.7 -1.7 11.067 11.067" fill="none" aria-hidden="true"><path d="M0.5 7.16667L7.16667 0.5M7.16667 7.16667V0.5H0.5" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <span class="footer__rule"></span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

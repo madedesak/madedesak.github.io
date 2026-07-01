@@ -108,7 +108,7 @@
   --cs-lh-loosest: 1.6;    /* body copy               */
 
   /* letter-spacing */
-  --cs-ls-eyebrow:   1.6px;   /* mono eyebrow              */
+  --cs-ls-eyebrow:   0.72px;   /* mono eyebrow              */
   --cs-ls-label:     1.4px;   /* mono caps (back/cap/pill) */
   --cs-ls-wide:      1px;     /* tags / toc group / ph     */
   --cs-ls-toc:       0.4px;   /* toc links                 */
@@ -136,6 +136,7 @@
   letter-spacing: var(--cs-ls-eyebrow);
   text-transform: uppercase;
   color: var(--cs-text-subtle);
+  margin-bottom: 12px;
 }
 .cs-body {
   font-family: var(--cs-font-sans);
@@ -183,8 +184,8 @@
 }
 .cs-back {
   display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-12); letter-spacing: var(--cs-ls-label);
-  color: var(--cs-text-muted); transition: color 0.2s ease;
+  font-family: var(--mono); font-weight: 300; font-size: 12px; letter-spacing: 1.44px;
+  color: var(--overline); transition: color 0.2s ease;
 }
 .cs-back:hover { color: var(--cs-text); }
 .cs-back__arrow { width: 16px; height: 16px; display: block; }
@@ -314,17 +315,16 @@
   position: relative;
   aspect-ratio: 768 / 444;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  padding-top: 80px;
 }
 .cs-figure--hero .cs-hero-stage__bg {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 0;
 }
 /* frosted-glass card */
 .cs-glass {
-  position: absolute;
-  left: calc(89px / 768px * 100%);
-  top: calc(89px / 444px * 100%);
   width: calc(616px / 768px * 100%);
-  height: calc(355px / 444px * 100%);
   padding: 8px 8px 0;
   border-radius: 12px 12px 0 0;
   background: var(--cs-glass-bg);
@@ -403,7 +403,7 @@
 .cs-step__desc { display: block; font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-14); line-height: var(--cs-lh-loose); color: var(--cs-text-muted); }
 
 /* ---------- FUNNEL (centered head + 3 cols) ---------- */
-.cs-funnel-head { text-align: center; font-size: var(--cs-fs-30); }
+.cs-funnel-head { text-align: center; font-size: var(--cs-fs-22); }
 .cs-funnel { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 40px; }
 .cs-funnel__col { display: flex; flex-direction: column; gap: 14px; }
 .cs-funnel__num { display: flex; align-items: center; gap: 12px; font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-14); color: var(--cs-text-subtle); }
@@ -433,7 +433,7 @@
 .cs-issues__list { display: flex; flex-direction: column; gap: 22px; }
 .cs-issue { display: grid; grid-template-columns: 40px 1fr; align-items: start; }
 .cs-issue__num { font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-16); color: var(--cs-text-subtle); }
-.cs-issue__title { font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-17); line-height: var(--cs-lh-heading); color: var(--cs-text); margin-bottom: 4px; margin-top: 16px; letter-spacing: var(--cs-ls-body); }
+.cs-issue__title { font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-17); line-height: var(--cs-lh-heading); color: var(--cs-text); margin-bottom: 4px; letter-spacing: var(--cs-ls-body); }
 
 /* insight (right column) — a light card, top-aligned with the first issue */
 .cs-insight {

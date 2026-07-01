@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>Smart Promo Recommendation — Case Study — Desak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400&family=IBM+Plex+Serif:ital,wght@1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="case-study.css" />
+  <style>
+    /* ── case 3 coming-soon overrides ── */
+
+    /* blue hero stage */
+    .cs3-stage { background: #f4f9ff; }
+
+    /* de-emphasise the abstract bg so the browser window reads clearly */
+    .cs3-stage .cs-hero-stage__bg { opacity: 0.5; }
+
+    /* stronger frosted glass to match Figma blur(50px) */
+    .cs3-stage .cs-glass {
+      background: linear-gradient(to bottom, rgba(255,255,255,0.7), rgba(255,255,255,0));
+      -webkit-backdrop-filter: blur(40px);
+      backdrop-filter: blur(40px);
+    }
+
+    /* coming-soon gradient overlay — pulls up over the bottom of the hero */
+    .cs3-overlay {
+      margin-top: -200px;
+      position: relative;
+      z-index: 2;
+      height: 280px;
+      background: linear-gradient(to bottom, rgba(253,253,253,0) 0%, #fdfdfd 48%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 16px;
+      padding-bottom: 60px;
+    }
+
+    .cs3-lock-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .cs3-lock-text__title {
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.2;
+      color: var(--black);
+    }
+
+    .cs3-lock-text__sub {
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.2;
+      color: var(--body);
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body class="cs">
+
+  <div class="cs-wrap">
+
+    <main class="cs-main">
+
+      <header class="cs-header">
+
+        <a class="cs-back" href="index.html#work">
+          <svg class="cs-back__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M10 3 L5 8 L10 13 M5 8 H13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>BACK TO HOME</span>
+        </a>
+
+        <h1 class="cs-title reveal">
+          <span class="sans-light">Helping sellers strategize better with AI: </span><span class="serif-accent">Smart Promo Recommendation</span>
+        </h1>
+
+        <div class="cs-tags reveal">
+          <img class="cs-tags__logo" src="assets/cs-tiktok.png" alt="" />
+          <span class="cs-tags__sep">TIKTOK SHOP</span>
+          <span class="cs-tags__sep">/</span>
+          <span>DESIGN</span>
+        </div>
+
+        <figure class="cs-figure cs-figure--hero reveal">
+          <div class="cs-hero-stage cs3-stage">
+            <img class="cs-hero-stage__bg" src="assets/cs3-hero-bg.webp" alt="" aria-hidden="true" />
+            <div class="cs-glass">
+              <div class="cs-browser">
+                <img class="cs-window__bar" src="assets/cs3-window-bar.png" alt="" aria-hidden="true" />
+                <img class="cs-window__shot" src="assets/cs3-hero-shot.webp" alt="Smart Promo Recommendation interface in TikTok Shop Seller Center" />
+              </div>
+            </div>
+          </div>
+        </figure>
+
+        <!-- coming-soon overlay: gradient fades the hero bottom into white,
+             lock icon + message centered just below the fade point -->
+        <div class="cs3-overlay">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="4" y="11" width="16" height="11" rx="2" stroke="#202020" stroke-width="1.2"/>
+            <path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="#202020" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          <div class="cs3-lock-text">
+            <p class="cs3-lock-text__title">Coming soon</p>
+            <p class="cs3-lock-text__sub">Sorry for the wait, this case study is currently being polished</p>
+          </div>
+        </div>
+
+      </header>
+
+    </main>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

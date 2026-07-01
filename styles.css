@@ -7,7 +7,7 @@
   --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --serif: "IBM Plex Serif", Georgia, serif;
   --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  --pad: 160px;
+  --pad: 200px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -46,7 +46,7 @@ a { color: inherit; text-decoration: none; }
   font-weight: 300;
   color: var(--overline);
 }
-.sans-light { font-family: var(--sans); font-weight: 300; }
+.sans-light { font-family: var(--sans); font-weight: 300; letter-spacing:0.64px; }
 
 /* ---------- NAV ---------- */
 .nav {
@@ -105,62 +105,41 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ---------- HERO ---------- */
+/* two equal columns (same grid as .case) so the bio fills the left half and its
+   right edge lands on the centre line — aligned with the case image's right edge below */
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 639px) 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: center;
-  gap: 60px;
-  min-height: 625px;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
-.hero__content {
-  display: flex;
-  flex-direction: column;
-  gap: 64px;
-  align-items: flex-start;
+.hero__bio {
+  font-family: var(--sans); font-weight: 300; font-size: 20px; line-height: 1.5;
+  letter-spacing: 0.32px; color: var(--black);
 }
-.hero__text { display: flex; flex-direction: column; gap: 16px; }
-.hero__title { font-size: 40px; line-height: 1.2; font-weight: 300; }
-.hero__title .sans-light { color: var(--black); letter-spacing: -0.8px; }
-.hero__subtitle { font-family: var(--sans); font-weight: 300; font-size: 16px; line-height: 1.5; color: var(--body); }
-.hero__media {
-  justify-self: end;
-  width: 100%;
-  max-width: 499px;
-  aspect-ratio: 499 / 503;
-  opacity: 0.5;
-}
-.hero__media img { width: 100%; height: 100%; object-fit: cover; }
+.hero__bio .serif-accent { color: var(--overline); }   /* "one rectangle at a time." */
+.hero__cv { display: flex; flex-direction: column; gap: 20px; padding-left: 40px; }   /* match .case__info padding → year aligns with the case title's left edge */
+.hero__cv-row { display: flex; justify-content: space-between; align-items: baseline; font-size: 12px; }   /* auto gaps; role lands on the right edge */
+.hero__cv-year { flex: 0 0 80px; font-family: var(--mono); font-weight: 300; color: var(--overline); }
+.hero__cv-co   { flex: 0 0 140px; font-family: var(--serif); font-style: italic; font-weight: 300; color: var(--black); letter-spacing: 0.48px; }
+.hero__cv-role { flex: 0 0 145px; font-family: var(--sans); font-weight: 300; color: var(--body); letter-spacing: 0.5px; }
 
 /* ---------- HERO ENTRANCE ANIMATION ---------- */
-/* blur + rise + fade reveal, staggered (LaunchNow-style) */
+/* blur + rise reveal, staggered (LaunchNow-style) */
 @keyframes riseIn {
-  from { opacity: 0; transform: translateY(54px) scale(0.96); filter: blur(24px); }
+  from { opacity: 0; transform: translateY(40px) scale(0.97); filter: blur(18px); }
   to   { opacity: 1; transform: translateY(0)    scale(1);    filter: blur(0); }
 }
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(1.04); filter: blur(12px); }
-  to   { opacity: 0.5; transform: scale(1);  filter: blur(0); } /* hero media rests at 0.5 */
-}
-/* expressive expo-out settle */
-.hero__title .serif-accent,
-.hero__title .sans-light {
-  display: inline-block;
-  animation: riseIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-.hero__title .serif-accent { animation-delay: 0.15s; }
-.hero__title .sans-light  { animation-delay: 0.45s; }
-.hero__subtitle           { animation: riseIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.78s both; }
-.hero__content > .btn     { animation: riseIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 1.0s both; }
-.hero__media              { animation: fadeIn 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both; }
+.hero__bio    { animation: riseIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both; }
+.hero__cv-row { animation: riseIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.hero__cv-row:nth-child(1) { animation-delay: 0.45s; }
+.hero__cv-row:nth-child(2) { animation-delay: 0.58s; }
+.hero__cv-row:nth-child(3) { animation-delay: 0.71s; }
+.hero__cv-row:nth-child(4) { animation-delay: 0.84s; }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero__title .serif-accent,
-  .hero__title .sans-light,
-  .hero__subtitle,
-  .hero__content > .btn { animation: none; }
-  .hero__media { animation: none; opacity: 0.5; }
+  .hero__bio, .hero__cv-row { animation: none; }
 }
 
 /* ---------- SCROLL REVEAL (case studies) ---------- */
@@ -217,7 +196,7 @@ a { color: inherit; text-decoration: none; }
   padding: 40px 0 40px 40px;   /* normal row: info on the right → gap on its left */
 }
 .case--reverse .case__info { padding: 40px 40px 40px 0; }   /* reversed: info on the left → gap on its right */
-.case__title { font-size: 32px; line-height: 1.2; font-weight: 300; color: var(--black); letter-spacing:0.4px}
+.case__title { font-size: 24px; line-height: 1.5; font-weight: 300; color: var(--black);}
 .case__title .sans-light { letter-spacing: -0.16px; }
 .case__cta { margin-top: 32px; }
 
@@ -252,15 +231,61 @@ a { color: inherit; text-decoration: none; }
 }
 .archive__back:hover { color: var(--black); }
 .archive__back svg { width: 16px; height: 16px; }
-.archive__title { margin-top: 28px; font-size: 38px; line-height: 1.2; font-weight: 300; letter-spacing: -0.6px; max-width: 600px; }
+.archive__title { margin-top: 28px; font-size: 24px; line-height: 1.2; font-weight: 300; letter-spacing: -0.6px; max-width: 600px; }
 .archive { padding-top: 72px; padding-bottom: 120px; }
 .archive__grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; row-gap: 60px; }
 .archive__card { display: flex; flex-direction: column; }
-.archive__shot { aspect-ratio: 580 / 338; border-radius: 12px; overflow: hidden; background: #f3f3f4; }
+.archive__shot { aspect-ratio: 580 / 338; overflow: hidden; background: #f3f3f4; }
 .archive__shot img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
 .archive__card:hover .archive__shot img { transform: scale(1.03); }
+/* disable the generic scale for the new card types */
+.archive__card:hover .archive__shot--aff img,
+.archive__card:hover .archive__shot--duo img { transform: none; }
+
+/* ── archive card: affiliate (card 1) ─────────────────────────────── */
+.archive__shot--aff { background: #f5f3ff; position: relative; }
+/* browser window — not an img, unaffected by the generic reset */
+.archive__aff-browser {
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 68.97%;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+  display: flex; flex-direction: column; gap: 1px;
+}
+.archive__aff-content { position: relative; width: 100%; aspect-ratio: 400 / 255; overflow: hidden; }
+/* prefixed with parent to reach 0-2-0 specificity and beat the .archive__shot img 0-1-1 reset */
+.archive__shot--aff .archive__aff-bg {
+  position: absolute;
+  left: 0; top: -6.8%;
+  width: 117.9%; height: 113.9%;
+  object-fit: cover;
+  pointer-events: none;
+}
+.archive__shot--aff .archive__aff-bar { display: block; width: 100%; height: auto; }
+.archive__shot--aff .archive__aff-gif {
+  position: absolute;
+  width: 100%; height: 101.93%;
+  top: -1.81%; left: 0;
+  object-fit: cover;
+}
+
+/* ── archive card: duo (card 6) ───────────────────────────────────── */
+.archive__shot--duo { background: #f2f2ff; display: flex; align-items: center; justify-content: center; gap: 24px; }
+.archive__duo-a,
+.archive__duo-b { position: relative; width: 36.55%; border-radius: 4px; overflow: hidden; flex: none; }
+.archive__duo-a { aspect-ratio: 212 / 176; }
+.archive__duo-b { aspect-ratio: 212 / 177; }
+/* 0-2-1 beats the .archive__shot img 0-1-1 reset */
+.archive__shot--duo .archive__duo-a img {
+  position: absolute; width: 339.43%; height: 254.5%; left: -90.31%; top: -84.75%; max-width: none;
+}
+.archive__shot--duo .archive__duo-b img {
+  position: absolute; width: 276.59%; height: 206.6%;  left: -63.51%; top: -60.69%; max-width: none;
+}
 .archive__meta { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-top: 16px; }
-.archive__name { font-family: var(--sans); font-weight: 300; font-size: 15px; color: var(--black); }
+.archive__name { font-family: var(--sans); font-weight: 300; font-size: 15px; color: var(--black); letter-spacing: 0.5px;}
 .archive__tag { font-family: var(--mono); font-weight: 300; font-size: 11px; letter-spacing: 1px; color: var(--overline); white-space: nowrap; }
 /* progressive blur fixed to the bottom of the viewport: content sits frosted at
    the bottom edge and sharpens as it scrolls up out of the band */
@@ -375,15 +400,17 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 960px) {
   .hero {
     grid-template-columns: 1fr;
-    gap: 40px;
-    min-height: 0;
+    gap: 48px;
+    padding-top: 72px;
+    padding-bottom: 72px;
   }
-  .hero__content { gap: 40px; }
-  .hero__media { justify-self: start; order: 2; }
+  .hero__bio { max-width: none; }
+  .hero__cv { width: 100%; padding-left: 0; }   /* drop the desktop indent once stacked */
 
   .cases { gap: 96px; }
   .case, .case--reverse { grid-template-columns: 1fr; align-items: stretch; gap: 24px; }
   .case__visual { flex: none; max-width: 100%; width: 100%; margin: 0 auto; }
+  .case--reverse .case__visual { order: -1; }   /* image on top for every card once stacked */
   .case__info, .case--reverse .case__info { padding: 0; }
   .case__title { order: 1; }
   .stats { order: 2; margin-top: 28px; }
@@ -405,9 +432,23 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 560px) {
   :root { --pad: 16px; }
 
-  .nav { gap: 16px; font-size: 11px; flex-wrap: wrap; }
-  .hero__title { font-size: 28px; }
-  .hero__subtitle { font-size: 14px; }
+  .nav { gap: 12px; font-size: 10px; letter-spacing: 0.5px; }   /* stays one row down to ~340px phones */
+  .hero { padding-top: 56px; padding-bottom: 56px; }
+  .hero__bio { font-size: 18px; }
+  /* one shared grid (rows are display:contents) so the year column is the same width on every row → company + role line up perfectly */
+  .hero__cv { display: grid; grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr); gap: 16px 14px; align-items: start; }
+  .hero__cv-row { display: contents; font-size: 10px; }   /* 10px must sit on the row — children inherit from it, not from .hero__cv */
+  .hero__cv-year { white-space: nowrap; }
+
+  /* full-width "VIEW CASE STUDY" button per the mobile frame */
+  /* full-width: label centered across the whole button, divider + arrow pinned to the right edge */
+  .case__cta { align-self: stretch; justify-content: center; }
+  .case__cta .btn__divider { position: absolute; right: 43px; top: 50%; margin-top: -9px; }
+  .case__cta .btn__arrow { position: absolute; right: 16px; top: 50%; margin-top: -5.5px; }
+
+  /* stack each experience entry: year on its own line, then company / role / desc */
+  .entry { flex-direction: column; gap: 8px; }
+  .entry__year { flex: 0 0 auto; }   /* drop the 180px basis (becomes height once column) */
 
   .case__title { font-size: 24px; }
   .experience__heading { font-size: 26px; }
