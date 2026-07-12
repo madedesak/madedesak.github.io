@@ -543,7 +543,7 @@
 .cs-concept__head { display: flex; flex-direction: column; gap: 8px; }
 .cs-concept__titles { display: flex; flex-direction: column; gap: 16px; }
 .cs-concept__num { font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-14); color: var(--cs-text-subtle); }
-.cs-concept__title { font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-14); line-height: var(--cs-lh-title); color: var(--cs-text); }
+.cs-concept__title { font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-14); line-height: var(--cs-lh-title); color: var(--cs-text); letter-spacing:0.5px}
 .cs-concept__desc { font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-12); line-height: var(--cs-lh-body); color: var(--cs-text-muted); }
 /* mockup cropped to the Figma box ratio so it doesn't blow up the column */
 .cs-concept__img { margin: 0; overflow: hidden; aspect-ratio: 385 / 241; }
@@ -553,7 +553,7 @@
 .cs-prc { display: flex; gap: 20px; align-items: start; }
 .cs-prc__label { flex: none; font-family: var(--cs-font-mono); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-12); letter-spacing: var(--cs-ls-wide); text-transform: uppercase; color: var(--cs-text-subtle); }
 .cs-prc__text { flex: 1 1 0; min-width: 0; font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-14); line-height: var(--cs-lh-body); color: var(--cs-text-muted); }
-.cs-prc__text--pro { font-style: italic; font-size: var(--cs-fs-16); letter-spacing: -0.32px; color: var(--cs-text); }
+.cs-prc__text--pro { font-style: italic; font-size: var(--cs-fs-16); letter-spacing: -0.32px; color: var(--cs-text); letter-spacing:0.5px}
 .cs-callout {
   margin-top: 8px; padding: 0; max-width: 720px;
   font-family: var(--cs-font-sans); font-weight: var(--cs-fw-light); font-size: var(--cs-fs-20);
